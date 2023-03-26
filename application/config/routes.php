@@ -53,4 +53,7 @@ $route['default_controller'] = 'TrangChu';
 $route['404_override'] = 'errors/page_missing';
 $route['translate_uri_dashes'] = FALSE;
 
+
 $route['dang-nhap'] = 'DangNhap';
+$route['xu-ly-dang-nhap'] = 'DangNhap/Login';
+$route['dang-xuat'] = 'DangXuat';

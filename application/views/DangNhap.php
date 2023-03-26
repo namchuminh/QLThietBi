@@ -28,19 +28,19 @@
 <body class="login-page">
     <div class="login-box">
         <div class="logo">
-            <a href="javascript:void(0);">Admin<b>BSB</b></a>
-            <small>Admin BootStrap Based - Material Design</small>
+            <a href="javascript:void(0);">Đăng Nhập</a>
+           <!--  <small>Admin BootStrap Based - Material Design</small> -->
         </div>
         <div class="card">
             <div class="body">
-                <form id="sign_in" method="POST">
-                    <div class="msg">Sign in to start your session</div>
+                <form id="sign_in" action="<?php echo base_url('xu-ly-dang-nhap/'); ?>" method="POST">
+                    <div class="msg">Nhập Tài Khoản Mật Khẩu</div>
                     <div class="input-group">
                         <span class="input-group-addon">
                             <i class="material-icons">person</i>
                         </span>
                         <div class="form-line">
-                            <input type="text" class="form-control" name="username" placeholder="Username" required autofocus>
+                            <input type="text" class="form-control" name="username" placeholder="Tài Khoản">
                         </div>
                     </div>
                     <div class="input-group">
@@ -48,7 +48,7 @@
                             <i class="material-icons">lock</i>
                         </span>
                         <div class="form-line">
-                            <input type="password" class="form-control" name="password" placeholder="Password" required>
+                            <input type="password" class="form-control" name="password" placeholder="Mật Khẩu">
                         </div>
                     </div>
                     <div class="row">
@@ -59,7 +59,11 @@
                         <div class="col-xs-4">
                             <button class="btn btn-block bg-pink waves-effect" type="submit">SIGN IN</button>
                         </div>
+                        
                     </div>
+                    <?php if(isset($error)){ ?>
+                            <p style="color: red; text-align: center;"><?php echo $error; ?></p>       
+                    <?php }?>
                     <div class="row m-t-15 m-b--20">
                         <div class="col-xs-6">
                             <a href="sign-up.html">Register Now!</a>
