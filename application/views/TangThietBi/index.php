@@ -9,6 +9,7 @@
     	<div class="row clearfix">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="card">
+                    <form action="<?php echo base_url('tang-thiet-bi/liet-ke/') ?>" method="POST">
                     <div class="header">
                         <button class="btn btn-warning waves-effect" type="submit">Liệt Kê</button>
                         <a class="btn btn-primary waves-effect" type="submit" href="<?php echo base_url('tang-thiet-bi/them/'); ?>">Thêm Mới</a>
@@ -22,7 +23,7 @@
                                         <i class="material-icons">date_range</i>
                                     </span>
                                     <div class="form-line">
-                                        <input type="date" class="form-control date">
+                                        <input name="NgayBatDau" type="date" class="form-control date">
                                     </div>
                                 </div>
                             </div>
@@ -33,17 +34,17 @@
                                         <i class="material-icons">date_range</i>
                                     </span>
                                     <div class="form-line">
-                                        <input type="date" class="form-control date">
+                                        <input name="NgayKetThuc" type="date" class="form-control date">
                                     </div>
                                 </div>
                             </div>
                             <div class="col-sm-4">
                                 <label>Kho nhập</label>
-                                <select class="form-control show-tick" tabindex="-98">
-                                	<option hidden>Lựa chọn kho</option>
-                                    <option>Mustard</option>
-                                    <option>Ketchup</option>
-                                    <option>Relish</option>
+                                <select name="MaKho" class="form-control show-tick" tabindex="-98">
+                                	<option value="0" hidden>Chọn kho</option>
+                                    <?php foreach ($Kho as $key => $value) { ?>
+                                       <option value="<?php echo $value['MaKho'] ?>" > <?php echo $value['TenKho'] ?></option>
+                                    <?php } ?>
                                 </select>
                             </div>
 	                  	</div>
@@ -52,7 +53,7 @@
 	                            <div class="form-group">
 	                                <div class="form-line">
 	                                	<label>Số chứng từ</label>
-	                                    <input type="number" class="form-control" placeholder="Nhập số chứng từ">
+	                                    <input type="text" name="MaChungTuMin" class="form-control" placeholder="Nhập số chứng từ">
 	                                </div>
 	                            </div>
 	                        </div>
@@ -60,14 +61,18 @@
 	                            <div class="form-group">
 	                                <div class="form-line">
 	                                	<label>Đến số</label>
-	                                    <input type="number" class="form-control" placeholder="Nhập số chứng từ">
+	                                    <input type="text" name="MaChungTuMax" class="form-control" placeholder="Nhập số chứng từ">
 	                                </div>
 	                            </div>
 	                        </div>
                     	</div>
-
+                        <?php if(isset($error)){ ?>
+                            <p style="color: red;"><?php echo $error ?></p>
+                        <?php } ?>
+                    </form>
                     <div class="row clearfix">
                     	<div class="header">
+
 	                    <h2>
 	                        Danh sách
 	                    </h2>
@@ -77,7 +82,7 @@
                                 <thead>
                                     <tr>
                                         <th>Mã</th>
-                                        <th>NgàyLập</th>
+                                        <th>Ngày Lập</th>
                                         <th>Số phiếu</th>
                                         <th>Kho | Phòng chức năng </th>
                                         <th>Nhập từ | Xuất cho </th>
@@ -90,19 +95,21 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    <?php foreach ($ChungTu as $key => $value) { ?>
                                     <tr>
-                                        <th scope="row">0000001</th>
-                                        <td>Mark</td>
-                                        <td>Otto</td>
-                                        <td>@mdo</td>
-                                        <td>Mark</td>
-                                        <td>Otto</td>
+                                        <th scope="row"><?php echo $value["MaChungTu"]; ?></th>
+                                        <td><?php echo $value["NgayNhap"]; ?></td>
+                                        <td><?php echo $value["SoPhieu"]; ?></td>
+                                        <td><?php echo $value["TenKho"]; ?></td>
+                                        <td><?php echo $value["TenNhaCungCap"]; ?></td>
+                                        <td><?php echo $value["DienGiai"]; ?></td>
                                         <td><a href=""><i class="fa-sharp fa-solid fa-gears"></i></a></td>
                                         <td><a href=""><i class="fa-solid fa-file"></i></a></td>
                                         <td><a href=""><i class="fa-solid fa-file"></i></a></td>
                                         <td><a href=""><i class="fa-solid fa-pen-to-square"></i></a></td>
                                         <td><a href=""><i class="fa-solid fa-trash"></i></a></td>
-                                    </tr>                                
+                                    </tr>
+                                    <?php } ?>                                
                                 </tbody>
                             </table>
                         </div>
