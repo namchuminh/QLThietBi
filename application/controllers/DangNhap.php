@@ -6,7 +6,7 @@ class DangNhap extends CI_Controller {
 	{
 		parent::__construct();
 		if($this->session->has_userdata('logged_in')){
-			return redirect(base_url("TrangChu/"));
+			return redirect(base_url("index/"));
 		}
 		$this->load->model('Model_Login');
 
@@ -32,7 +32,7 @@ class DangNhap extends CI_Controller {
 				        'logged_in' => TRUE
 					);
 					$this->session->set_userdata($newdata);
-					redirect(base_url("TrangChu/"));
+					redirect(base_url("index/"));
 				}else{
 					$data = array(
 						"error" => "Sai tài khoản hoặc mật khẩu",
