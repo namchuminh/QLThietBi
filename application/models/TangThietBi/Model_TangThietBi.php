@@ -58,7 +58,7 @@ class Model_TangThietBi extends CI_Model {
 	}
 	public function Get_ChungTu_ByMaChungTu2($MaChungTuMin){
 		$sql = "SELECT chungtu.*, kho.TenKho, nhacungcap.TenNhaCungCap FROM `chungtu`, kho, nhacungcap WHERE chungtu.MaKho = kho.MaKho AND chungtu.MaNhaCungCap = nhacungcap.MaNhaCungCap AND chungtu.MaChungTu = ?";
-		$result = $this->db->query($sql, array($MaChungTuMin));
+		$result = $this->db->query($sql, array($MaChungTuMin, $MaChungTuMax));
 		return $result->result_array();
 	}
 

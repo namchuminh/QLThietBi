@@ -49,12 +49,7 @@ class ThemChungTu extends CI_Controller {
 				
 				$result=$this->Model_TangThietBi->ThemChungTu($NgayNhap, $SoPhieu, $LyDoTang, $DienGiai, $MaKho, $MaNhaCungCap, $SohdTaiChinh, $KyHieu, $Ngayhd);
 				if($result==True){
-					$data = array(
-						'alert'=> "Thêm Thành Công",
-						'Kho' => $Kho,
-						'NhaCungCap' => $NhaCungCap,
-					);
-					return $this->load->view('TangThietBi/ThemChungTu', $data);
+					return redirect(base_url('tang-thiet-bi/'));
 				}else{
 					$data = array(
 						'alert'=> "Thêm Thất Bại",

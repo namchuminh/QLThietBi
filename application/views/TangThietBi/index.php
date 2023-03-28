@@ -1,6 +1,9 @@
 <?php require(__DIR__.'/layouts/Header.php'); ?>
 <?php require(__DIR__.'/layouts/Nav.php'); ?>
-
+<?php if (isset($result)){
+    echo "<script type='text/javascript'>alert('$result');</script>";
+} ?>
+    
 <section class="content">
     <div class="container-fluid">
         <div class="block-header">
@@ -106,8 +109,8 @@
                                         <td><a href=""><i class="fa-sharp fa-solid fa-gears"></i></a></td>
                                         <td><a href=""><i class="fa-solid fa-file"></i></a></td>
                                         <td><a href=""><i class="fa-solid fa-file"></i></a></td>
-                                        <td><a href=""><i class="fa-solid fa-pen-to-square"></i></a></td>
-                                        <td><a href=""><i class="fa-solid fa-trash"></i></a></td>
+                                        <td><a href="<?php echo base_url("tang-thiet-bi/sua/".$value["MaChungTu"]) ?>"><i class="fa-solid fa-pen-to-square"></i></a></td>
+                                        <td><a onclick="return confirm('Bạn có muốn xóa chứng từ này không');" href="<?php echo base_url("tang-thiet-bi/xoa/".$value["MaChungTu"]) ?>"><i class="fa-solid fa-trash"></i></a></td>
                                     </tr>
                                     <?php } ?>                                
                                 </tbody>
@@ -120,5 +123,4 @@
         </div>
     </div>
 </section>
-
 <?php require(__DIR__.'/layouts/Footer.php'); ?>

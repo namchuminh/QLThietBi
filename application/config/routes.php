@@ -65,3 +65,6 @@ $route['tang-thiet-bi/them'] = 'TangThietBi/ThemChungTu';
 $route['tang-thiet-bi/them-chung-tu'] = 'TangThietBi/ThemChungTu/ThemChungTu';
 
 $route['tang-thiet-bi/liet-ke'] = "TangThietBi/index/TimKiem";
+$route['tang-thiet-bi/xoa/(:any)'] = "TangThietBi/XoaChungTu/index/$1";
+$route['tang-thiet-bi/sua/(:any)'] = "TangThietBi/SuaChungTu/index/$1";
+$route['tang-thiet-bi/sua-chung-tu/(:any)'] = "TangThietBi/SuaChungTu/Sua/$1";
