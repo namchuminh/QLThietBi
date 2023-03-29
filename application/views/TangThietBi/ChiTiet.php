@@ -85,7 +85,20 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                                                
+                                    <?php foreach ($ChiTietHoaDon as $value) { ?>
+                                        <tr>
+                                            <td><?php echo $value['MaChiTietHoaDon'];?></td>
+                                            <td><?php echo $value['KyHieu'];?></td>
+                                            <td><?php echo $value['TenThietBi'];?></td>
+                                            <td><?php echo $value['DonViTinh'];?></td>
+                                            <td><?php echo $value['SoLuong'];?></td>
+                                            <td><?php echo $value['ThanhTien'];?></td>
+                                            <td><?php echo $value['MaCaBiet'];?></td>
+                                            <td><a href="<?php echo base_url("tang-thiet-bi/chi-tiet/sua/".$value['MaChungTu'].'/'.$value['MaChiTietHoaDon'])?>"><i class="fa-solid fa-pen-to-square"></i></a></td>
+                                            <td><a onclick="return confirm('Bạn có muốn xóa chi tiết hóa đơn này không');" href="<?php echo base_url("tang-thiet-bi/chi-tiet/xoa-chi-tiet/".$value['MaChungTu'])."/".$value["MaChiTietHoaDon"]; ?>"><i class="fa-solid fa-trash"></i></a></td>
+                                        </tr>   
+                                    <?php  } ?>
+                                                          
                                 </tbody>
                             </table>
                         </div>

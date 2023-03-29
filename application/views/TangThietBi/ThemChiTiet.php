@@ -14,34 +14,37 @@
                         <h2><a href="<?php echo base_url("tang-thiet-bi/") ?>">Danh sách »</a> <a href="<?php echo base_url('tang-thiet-bi/chi-tiet/'.$MaChungTu); ?>">Chi tiết hóa đơn »</a> Thêm chi tiết</h2>
                     </div>
                     <div class="body">
-                        <form action="" method="POST">
+                        <form action="<?php echo base_url('tang-thiet-bi/chi-tiet/them-chi-tiet/'.$MaChungTu); ?>" method="POST">
                             <div class="row clearfix">
 	                            <div class="col-sm-4">
 	                                <label>Môn học</label>
-	                                <select class="form-control show-tick" tabindex="-98">
+	                                <select name="MonHoc" class="form-control show-tick" tabindex="-98">
 	                                    <option value="0" hidden>Chọn môn</option>
-	                                    <option value="">Môn học 1</option>
-	                                 	<option value="">Môn học 2</option>
+	                                    <?php foreach ($MonHoc as $key => $value){ ?>
+	                                    	<option value="<?php echo $value['MaMonHoc']; ?>"><?php echo $value['TenMonHoc']; ?></option>
+	                                    <?php } ?>
 	                                </select>
 	                            </div>
 	                            <div class="col-sm-4">
 	                                <label>Khối lớp</label>
-	                                <select class="form-control show-tick" tabindex="-98">
+	                                <select name="KhoiLop" class="form-control show-tick" tabindex="-98">
 	                                    <option value="0" hidden>Chọn lớp</option>
-	                                    <option value="">Lớp 6</option>
-	                                 	<option value="">Lớp 7</option>
-	                                 	<option value="">Lớp 8</option>
-	                                 	<option value="">Lớp 9</option>
-	                                 	<option value="">Lớp 10</option>
-	                                 	<option value="">Lớp 11</option>
-	                                 	<option value="">Lớp 12</option>
+	                                    <option value="Lớp 6">Lớp 6</option>
+	                                 	<option value="Lớp 7">Lớp 7</option>
+	                                 	<option value="Lớp 8">Lớp 8</option>
+	                                 	<option value="Lớp 9">Lớp 9</option>
+	                                 	<option value="Lớp 10">Lớp 10</option>
+	                                 	<option value="Lớp 11">Lớp 11</option>
+	                                 	<option value="Lớp 12">Lớp 12</option>
 	                                </select>
 	                            </div>
 	                            <div class="col-sm-4">
 	                                <label>Thiết bị</label>
-	                                <select class="form-control show-tick" tabindex="-98">
-	                                    <option value="0" hidden>Chọn thiết bị</option>
-	                                    <option value="">Thiết bị 1</option>
+	                                <select name="MaThietBi" class="form-control show-tick" tabindex="-98">
+	                                    <option  value="0" hidden>Chọn thiết bị</option>
+	                                    <?php foreach ($ThietBi as $key => $value){ ?>
+	                                    	<option value="<?php echo $value['MaThietBi']; ?>"><?php echo $value['TenThietBi']; ?></option>
+	                                    <?php } ?>
 	                                </select>
 	                            </div>
 	                    	</div>
@@ -50,7 +53,7 @@
 	                                <div class="form-group">
 	                                    <div class="form-line">
 	                                        <label>Số lượng</label>
-	                                        <input type="text" class="form-control" placeholder="Nhập số lượng">
+	                                        <input name="SoLuong" type="text" class="form-control" placeholder="Nhập số lượng">
 	                                    </div>
 	                                </div>
 	                            </div>
@@ -58,7 +61,7 @@
 	                                <div class="form-group">
 	                                    <div class="form-line">
 	                                        <label>Đơn giá</label>
-	                                        <input type="text" name="DienGiai" class="form-control" placeholder="Nhập đơn giá">
+	                                        <input type="text" name="DonGia" class="form-control" placeholder="Nhập đơn giá">
 	                                    </div>
 	                                </div>
 	                            </div>
@@ -66,17 +69,24 @@
 	                        <div class="row clearfix">
 	                            <div class="col-sm-6">
 	                                <label>Quản lý thiết bị</label>
-	                                <select class="form-control show-tick" tabindex="-98">
-	                                    <option value="0" hidden>Chọn quản lý thiết bị</option>
-	                                    <option value="">Môn học 1</option>
-	                                 	<option value="">Môn học 2</option>
+	                                <select name="MaQuanLyThietBi" class="form-control show-tick" tabindex="-98">
+	                                    <option  value="0" hidden>Chọn quản lý thiết bị</option>
+	                                    <?php foreach ($QuanLyThietBi as $key => $value){ ?>
+	                                    	<option value="<?php echo $value['MaCaBiet']; ?>"><?php echo $value['TenQuanLyThietBi']; ?></option>
+	                                    <?php } ?>
 	                                </select>
 	                            </div>
 	                            <div class="col-sm-6">
 	                                <label>Đơn vị tính</label>
-	                                <select class="form-control show-tick" tabindex="-98">
+	                                <select name="DonViTinh" class="form-control show-tick" tabindex="-98">
 	                                    <option value="0" hidden>Chọn đơn vị tính</option>
-	                                    <option value="">Lớp 6</option>
+	                                    <?php 
+	                                    	$dvt = array('Tờ', 'Hộp', 'Cái','Bộ', 'Chiếc', 'Chai', 'Ống', 'mg', 'Kg', 'Lít', 'gram', 'ml', 'Tạ', 'yến'); 
+	                                    	foreach ($dvt as $value) { ?>
+	                                    	    <option value="<?php echo $value ?>"><?php echo $value ?></option>
+	                                    <?php } ?>
+
+	                                    
 	                                </select>
 	                            </div>
 		                    </div>
@@ -85,7 +95,7 @@
 	                                <div class="form-group">
 	                                    <div class="form-line">
 	                                        <label>VAT(%)</label>
-	                                        <input type="text" class="form-control" placeholder="Nhập VAT(%)">
+	                                        <input name="Vat" type="text" class="form-control" placeholder="Nhập VAT(%)">
 	                                    </div>
 	                                </div>
 	                            </div>
@@ -93,7 +103,7 @@
 	                                <div class="form-group">
 	                                    <div class="form-line">
 	                                        <label>Thành tiền</label>
-	                                        <input type="text" name="DienGiai" class="form-control" placeholder="Nhập thành tiền">
+	                                        <input type="text" name="ThanhTien" class="form-control" placeholder="Nhập thành tiền">
 	                                    </div>
 	                                </div>
 	                            </div>
@@ -103,13 +113,16 @@
 	                                <div class="form-group">
 	                                    <div class="form-line">
 	                                        <label>Thời gian khấu hao cho thiết bị (nếu có), đơn vị tính là Tháng</label>
-	                                        <input type="text" class="form-control" placeholder="Nhập thời gian khấu hao">
+	                                        <input name="ThoiGianKhauHao" type="text" class="form-control" placeholder="Nhập thời gian khấu hao">
 	                                    </div>
 	                                </div>
 	                            </div>
 	                        </div>
                         	<br>
-	                        <button class="btn btn-primary waves-effect" type="submit">Thêm Thiết Bị</button>
+                        	<?php if(isset($error)){ ?>
+	                            <p style="color: red;"><?php echo $error; ?></p>
+	                        <?php } ?>
+	                        <button class="btn btn-primary waves-effect" type="submit">Thêm Chi Tiết</button>
 	                        <button class="btn btn-success waves-effect" type="reset">Làm Mới</button>
 	                   	</form>
                        
@@ -119,5 +132,10 @@
         </div>
     </div>
 </section>
+<?php
+    if(isset($alert)){
+        echo "<script type='text/javascript'>alert('$alert');</script>"; 
+    }
+?>
 
 <?php require(__DIR__.'/layouts/Footer.php'); ?>

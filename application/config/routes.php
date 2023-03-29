@@ -70,4 +70,10 @@ $route['tang-thiet-bi/sua/(:any)'] = "TangThietBi/SuaChungTu/index/$1";
 $route['tang-thiet-bi/sua-chung-tu/(:any)'] = "TangThietBi/SuaChungTu/Sua/$1";
 $route['tang-thiet-bi/chi-tiet/(:any)'] = "TangThietBi/ChiTiet/index/$1";
 
+
 $route['tang-thiet-bi/chi-tiet/them/(:any)'] = "TangThietBi/ChiTiet/Them/$1";
+$route['tang-thiet-bi/chi-tiet/them-chi-tiet/(:any)'] = "TangThietBi/ChiTiet/ThemChiTiet/$1";
+$route['tang-thiet-bi/chi-tiet/xoa-chi-tiet/(:any)/(:any)']  = "TangThietBi/XoaChiTiet/index/$1/$2";
+$route['tang-thiet-bi/chi-tiet/sua/(:any)/(:any)']  = "TangThietBi/SuaChiTiet/index/$1/$2";
+
+$route['tang-thiet-bi/chi-tiet/sua-chi-tiet/(:any)/(:any)']  = "TangThietBi/SuaChiTiet/Sua/$1/$2";

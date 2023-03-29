@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class ChiTiet extends CI_Controller {
+class SuaChiTiet extends CI_Controller {
 
 	public function __construct()
 	{
@@ -9,40 +9,35 @@ class ChiTiet extends CI_Controller {
 			return redirect(base_url("dang-nhap/"));
 		}
 		$this->load->model('TangThietBi/Model_TangThietBi');
+		$this->load->model('TangThietBi/Model_SuaChiTiet');
 		$this->load->model('TangThietBi/Model_ThemChiTiet');
 	}
 
-	public function index($MaChungTu)
+	public function index($MaChungTu, $MaChiTietHoaDon)
 	{
-		$ChungTu = $this->Model_TangThietBi->Get_ChungTuById($MaChungTu);
-		$ChiTietHoaDon = $this->Model_ThemChiTiet->Get_ChiTiet($MaChungTu);
-		$data = array(
-			'ChiTietHoaDon'=>$ChiTietHoaDon,
-			'ChungTu' => $ChungTu,
-		);
-		return $this->load->view('TangThietBi/ChiTiet', $data);
-	}
-
-	public function Them($MaChungTu){
+		
 		$MonHoc = $this->Model_ThemChiTiet->Get_MonHoc();
 		$ThietBi = $this->Model_ThemChiTiet->Get_ThietBi();
 		$QuanLyThietBi = $this->Model_ThemChiTiet->Get_QuanLyThietBi();
-		
-		$data = array(
-			
+		$ChiTietHoaDon = $this->Model_SuaChiTiet->Get_ChiTiet_ById($MaChungTu, $MaChiTietHoaDon);
+		$data = array(	
 			'ThietBi'=>$ThietBi,
 			'QuanLyThietBi'=> $QuanLyThietBi,
 			'MonHoc'=>$MonHoc,
 			'MaChungTu' => $MaChungTu,
+			'ChiTietHoaDon' => $ChiTietHoaDon,
 		);
-		return $this->load->view('TangThietBi/ThemChiTiet', $data);
+		return $this->load->view('TangThietBi/SuaChiTiet', $data);
 	}
-	public function ThemChiTiet($MaChungTu){
+	public function Sua($MaChungTu, $MaChiTietHoaDon)
+	{
+		
 		$MonHoc = $this->Model_ThemChiTiet->Get_MonHoc();
 		$ThietBi = $this->Model_ThemChiTiet->Get_ThietBi();
 		$QuanLyThietBi = $this->Model_ThemChiTiet->Get_QuanLyThietBi();
+		$ChiTietHoaDon = $this->Model_SuaChiTiet->Get_ChiTiet_ById($MaChungTu, $MaChiTietHoaDon);
 
-		
+
 		$MaMonHoc = $this->input->post('MonHoc');
 		$KhoiLop = $this->input->post('KhoiLop');
 		$MaThietBi = $this->input->post('MaThietBi');
@@ -53,27 +48,34 @@ class ChiTiet extends CI_Controller {
 		$Vat = $this->input->post('Vat');
 		$ThanhTien = $this->input->post('ThanhTien');
 		$ThoiGianKhauHao = $this->input->post('ThoiGianKhauHao');
+
 		if(gettype($this->check_null($MaMonHoc, $KhoiLop, $MaThietBi, $SoLuong, $DonGia, $MaQuanLyThietBi, $DonViTinh, $Vat, $ThanhTien, $ThoiGianKhauHao))=="boolean"){
 			if (gettype($this->check_number($SoLuong, $DonGia, $Vat, $ThanhTien, $ThoiGianKhauHao))=="boolean") {
-				$result = $this->Model_ThemChiTiet->ThemChiTiet($MaChungTu, $MaMonHoc, $KhoiLop, $MaThietBi, $SoLuong, $DonGia, $MaQuanLyThietBi, $DonViTinh, $Vat, $ThanhTien, $ThoiGianKhauHao);
+				$result = $this->Model_SuaChiTiet->SuaChiTiet($MaMonHoc, $KhoiLop, $MaThietBi, $SoLuong, $DonGia, $MaQuanLyThietBi, $DonViTinh, $Vat, $ThanhTien, $ThoiGianKhauHao, $MaChungTu,$MaChiTietHoaDon);
 				if($result==True){
+					$MonHoc = $this->Model_ThemChiTiet->Get_MonHoc();
+					$ThietBi = $this->Model_ThemChiTiet->Get_ThietBi();
+					$QuanLyThietBi = $this->Model_ThemChiTiet->Get_QuanLyThietBi();
+					$ChiTietHoaDon = $this->Model_SuaChiTiet->Get_ChiTiet_ById($MaChungTu, $MaChiTietHoaDon);
 					$data = array(
-						
+						'ThanhCong'=>"Sửa thành công",
 						'ThietBi'=>$ThietBi,
 						'QuanLyThietBi'=> $QuanLyThietBi,
 						'MonHoc'=>$MonHoc,
 						'MaChungTu' => $MaChungTu,
+						'ChiTietHoaDon' => $ChiTietHoaDon,					
 					);
-					return redirect(base_url('tang-thiet-bi/chi-tiet/'.$MaChungTu),$data);
+					return $this->load->view('TangThietBi/SuaChiTiet', $data);
 				}else{
-					$data = array(
-						'alert' => 'Thêm thất bại',
+					$data = array(	
+						'error' => "Sua that bai",
 						'ThietBi'=>$ThietBi,
 						'QuanLyThietBi'=> $QuanLyThietBi,
 						'MonHoc'=>$MonHoc,
 						'MaChungTu' => $MaChungTu,
+						'ChiTietHoaDon' => $ChiTietHoaDon,
 					);
-					return $this->load->view('TangThietBi/ThemChiTiet', $data);
+					return $this->load->view('TangThietBi/SuaChiTiet', $data);
 				}
 			}else{
 				$data = array(
@@ -82,8 +84,9 @@ class ChiTiet extends CI_Controller {
 					'QuanLyThietBi'=> $QuanLyThietBi,
 					'MonHoc'=>$MonHoc,
 					'MaChungTu' => $MaChungTu,
+					'ChiTietHoaDon' => $ChiTietHoaDon,
 				);
-				return $this->load->view('TangThietBi/ThemChiTiet', $data);
+				return $this->load->view('TangThietBi/SuaChiTiet', $data);
 			}
 			
 		}else{
@@ -93,8 +96,9 @@ class ChiTiet extends CI_Controller {
 				'QuanLyThietBi'=> $QuanLyThietBi,
 				'MonHoc'=>$MonHoc,
 				'MaChungTu' => $MaChungTu,
+				'ChiTietHoaDon' => $ChiTietHoaDon,
 			);
-			return $this->load->view('TangThietBi/ThemChiTiet', $data);
+			return $this->load->view('TangThietBi/SuaChiTiet', $data);
 		}
 		
 	}
@@ -138,8 +142,8 @@ class ChiTiet extends CI_Controller {
 			return TRUE;
 		}
 	}
-
+	
 }
 
-/* End of file ChiTiet.php */
-/* Location: ./application/controllers/ChiTiet.php */
+/* End of file XoaChungTu.php */
+/* Location: ./application/controllers/XoaChungTu.php */
