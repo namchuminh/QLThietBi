@@ -268,13 +268,14 @@
                     <li class="header">MENU CHỨC NĂNG</li>
                     <li class="active">
                         <a href="<?php echo base_url('index/'); ?>">
-                            <span><i class="fa-solid fa-house"></i> Trang Chủ</span>
+                            <i class="material-icons">home</i>
+                            <span>Trang Chủ</span>
                         </a>
                     </li>
                     <li>
                         <a href="<?php echo base_url('tang-thiet-bi/'); ?>">
-                            
-                            <span><i class="fa-solid fa-plus"></i> Nhập tăng thiết bị dạy học</span>
+                            <i class="material-icons">layers</i>
+                            <span>Nhập tăng thiết bị dạy học</span>
                         </a>
                     </li>
                     

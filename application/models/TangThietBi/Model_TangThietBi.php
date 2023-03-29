@@ -24,6 +24,11 @@ class Model_TangThietBi extends CI_Model {
 		return $result->result_array();
 		
 	}
+	public function Get_ChungTuById($MaChungTu){
+		$sql = "SELECT chungtu.*, kho.TenKho, nhacungcap.TenNhaCungCap FROM `chungtu`, kho, nhacungcap WHERE chungtu.MaKho = kho.MaKho AND chungtu.MaNhaCungCap = nhacungcap.MaNhaCungCap AND chungtu.MaChungTu = ?";
+		$result = $this->db->query($sql, array($MaChungTu));
+		return $result->result_array();
+	}
 	public function Get_ChungTu(){
 		$sql = "SELECT chungtu.*, kho.TenKho, nhacungcap.TenNhaCungCap FROM `chungtu`, kho, nhacungcap WHERE chungtu.MaKho = kho.MaKho AND chungtu.MaNhaCungCap = nhacungcap.MaNhaCungCap";
 		$result = $this->db->query($sql);

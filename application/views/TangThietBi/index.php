@@ -106,7 +106,7 @@
                                         <td><?php echo $value["TenKho"]; ?></td>
                                         <td><?php echo $value["TenNhaCungCap"]; ?></td>
                                         <td><?php echo $value["DienGiai"]; ?></td>
-                                        <td><a href=""><i class="fa-sharp fa-solid fa-gears"></i></a></td>
+                                        <td><a href="<?php echo base_url('tang-thiet-bi/chi-tiet/'.$value["MaChungTu"]); ?>"><i class="fa-sharp fa-solid fa-gears"></i></a></td>
                                         <td><a href=""><i class="fa-solid fa-file"></i></a></td>
                                         <td><a href=""><i class="fa-solid fa-file"></i></a></td>
                                         <td><a href="<?php echo base_url("tang-thiet-bi/sua/".$value["MaChungTu"]) ?>"><i class="fa-solid fa-pen-to-square"></i></a></td>
