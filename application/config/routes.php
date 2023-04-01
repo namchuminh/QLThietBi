@@ -77,3 +77,7 @@ $route['tang-thiet-bi/chi-tiet/xoa-chi-tiet/(:any)/(:any)']  = "TangThietBi/XoaC
 $route['tang-thiet-bi/chi-tiet/sua/(:any)/(:any)']  = "TangThietBi/SuaChiTiet/index/$1/$2";
 
 $route['tang-thiet-bi/chi-tiet/sua-chi-tiet/(:any)/(:any)']  = "TangThietBi/SuaChiTiet/Sua/$1/$2";
+
+
+$route['tang-thiet-bi/xuat-phieu-nhap/(:any)'] = "TangThietBi/Excel_export/index/$1";
+$route['tang-thiet-bi/xuat-phieu-kiem-nhap/(:any)'] = "TangThietBi/Excel_export/KiemNhap/$1";

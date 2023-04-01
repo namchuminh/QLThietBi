@@ -85,9 +85,9 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php foreach ($ChiTietHoaDon as $value) { ?>
+                                    <?php foreach ($ChiTietHoaDon as $key => $value) { ?>
                                         <tr>
-                                            <td><?php echo $value['MaChiTietHoaDon'];?></td>
+                                            <td><?php echo $key+1;?></td>
                                             <td><?php echo $value['KyHieu'];?></td>
                                             <td><?php echo $value['TenThietBi'];?></td>
                                             <td><?php echo $value['DonViTinh'];?></td>
