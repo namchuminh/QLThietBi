@@ -67,7 +67,7 @@
                                     <div class="form-group">
                                         <div class="form-line">
                                             <label>Số lượng</label>
-                                            <input name="SoLuong"  value="<?php echo $ChiTietHoaDon[0]['SoLuong']; ?>" type="text" class="form-control" placeholder="Nhập số lượng">
+                                            <input name="SoLuong" id="SoLuong"  value="<?php echo $ChiTietHoaDon[0]['SoLuong']; ?>" type="text" class="form-control" placeholder="Nhập số lượng">
                                         </div>
                                     </div>
                                 </div>
@@ -75,7 +75,7 @@
                                     <div class="form-group">
                                         <div class="form-line">
                                             <label>Đơn giá</label>
-                                            <input type="text" value="<?php echo $ChiTietHoaDon[0]['DonGia']; ?>" name="DonGia" class="form-control" placeholder="Nhập đơn giá">
+                                            <input type="text" value="<?php echo $ChiTietHoaDon[0]['DonGia']; ?>" name="DonGia" id="DonGia" class="form-control" placeholder="Nhập đơn giá">
                                         </div>
                                     </div>
                                 </div>
@@ -116,7 +116,7 @@
                                     <div class="form-group">
                                         <div class="form-line">
                                             <label>VAT(%)</label>
-                                            <input name="Vat" value="<?php echo $ChiTietHoaDon[0]["Vat"]; ?>" type="text" class="form-control" placeholder="Nhập VAT(%)">
+                                            <input name="Vat" value="<?php echo $ChiTietHoaDon[0]["Vat"]; ?> " id="Vat" type="text" class="form-control" placeholder="Nhập VAT(%)">
                                         </div>
                                     </div>
                                 </div>
@@ -124,7 +124,7 @@
                                     <div class="form-group">
                                         <div class="form-line">
                                             <label>Thành tiền</label>
-                                            <input type="text" name="ThanhTien" value="<?php echo $ChiTietHoaDon[0]["ThanhTien"]; ?>" class="form-control" placeholder="Nhập thành tiền">
+                                            <input type="text" id="ThanhTien" name="ThanhTien" value="<?php echo $ChiTietHoaDon[0]["ThanhTien"]; ?>" class="form-control" placeholder="Nhập thành tiền">
                                         </div>
                                     </div>
                                 </div>
@@ -161,5 +161,17 @@
         echo "<script type='text/javascript'>alert('$alert');</script>"; 
     }
 ?>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+  $("#ThanhTien").click(function(){
+        var SoLuong = $('#SoLuong').val();
+        var DonGia = $('#DonGia').val();
+        var Vat = $('#Vat').val();
+        var ThanhTien = (SoLuong*DonGia)-(SoLuong*DonGia*Vat)/100;
+        $('#ThanhTien').val(ThanhTien);
+  });
+});
+</script>
 
 <?php require(__DIR__.'/layouts/Footer.php'); ?>
