@@ -103,7 +103,7 @@ class Excel_export extends CI_Controller {
 		$objWriter->save('DowloadMauPhieuNhap.xlsx');
 
 		header('Content-Type: application/vnd.ms-excel');
-		header('Content-Disposition: attachment;filename="MauPhieuNhap.xls"');
+		header('Content-Disposition: attachment;filename="BienBanNhap.xls"');
 		$objWriter->save('php://output');
 	}
 }
