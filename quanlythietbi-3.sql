@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th3 29, 2023 lúc 08:29 PM
+-- Thời gian đã tạo: Th4 03, 2023 lúc 03:51 PM
 -- Phiên bản máy phục vụ: 10.4.25-MariaDB
 -- Phiên bản PHP: 8.1.10
 
@@ -47,10 +47,8 @@ CREATE TABLE `chitiethoadon` (
 --
 
 INSERT INTO `chitiethoadon` (`MaChiTietHoaDon`, `MaChungTu`, `MaMonHoc`, `KhoiLop`, `MaThietBi`, `SoLuong`, `DonGia`, `MaCaBiet`, `DonViTinh`, `Vat`, `ThanhTien`, `ThoiGianKhauHao`) VALUES
-(7, 7, 12, 'Lớp 11', 13, 1, 2, 'SL', 'Chiếc', 121, 2, '1'),
-(9, 7, 7, 'Lớp 9', 10, 1, 2, 'SL', 'mg', 1, 2, '2'),
-(10, 7, 10, 'Lớp 11', 13, 1, 2, 'SL', 'Chiếc', 121, 2, '1'),
-(11, 7, 10, 'Lớp 11', 13, 1, 2, 'SL', 'Chiếc', 121, 2, '1');
+(12, 7, 5, 'Lớp 8', 7, 1, 2, 'SL', 'Bộ', 12, 12345, '1'),
+(13, 10, 6, 'Lớp 9', 10, 1, 2, 'SL', 'Cái', 1, 2, '3');
 
 -- --------------------------------------------------------
 
@@ -76,7 +74,8 @@ CREATE TABLE `chungtu` (
 --
 
 INSERT INTO `chungtu` (`MaChungTu`, `NgayNhap`, `SoPhieu`, `LyDoTang`, `DienGiai`, `MaKho`, `MaNhaCungCap`, `SohdTaiChinh`, `KyHieu`, `Ngayhd`) VALUES
-(7, '2023-04-01 00:00:00', 2, 'Được mượn sử dụng', 'bbbaa4', 8, 1, 3, '3', '2023-05-05 00:00:00');
+(7, '2023-04-01 00:00:00', 2, 'Được mượn sử dụng', 'bbbaa4', 8, 1, 3, '3', '2023-05-05 00:00:00'),
+(10, '2023-04-13 00:00:00', 1, 'Được viện trợ, cho tặng', 'bbb', 6, 1, 1, '2', '2023-04-21 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -310,13 +309,13 @@ ALTER TABLE `thietbi`
 -- AUTO_INCREMENT cho bảng `chitiethoadon`
 --
 ALTER TABLE `chitiethoadon`
-  MODIFY `MaChiTietHoaDon` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `MaChiTietHoaDon` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT cho bảng `chungtu`
 --
 ALTER TABLE `chungtu`
-  MODIFY `MaChungTu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `MaChungTu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT cho bảng `kho`
