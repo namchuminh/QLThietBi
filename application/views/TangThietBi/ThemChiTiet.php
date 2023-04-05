@@ -53,7 +53,7 @@
 	                                <div class="form-group">
 	                                    <div class="form-line">
 	                                        <label>Số lượng</label>
-	                                        <input name="SoLuong" type="text" class="form-control" placeholder="Nhập số lượng">
+	                                        <input name="SoLuong" type="text" id="SoLuong" class="form-control" placeholder="Nhập số lượng">
 	                                    </div>
 	                                </div>
 	                            </div>
@@ -61,7 +61,7 @@
 	                                <div class="form-group">
 	                                    <div class="form-line">
 	                                        <label>Đơn giá</label>
-	                                        <input type="text" name="DonGia" class="form-control" placeholder="Nhập đơn giá">
+	                                        <input type="text" name="DonGia" id="DonGia" class="form-control" placeholder="Nhập đơn giá">
 	                                    </div>
 	                                </div>
 	                            </div>
@@ -95,7 +95,7 @@
 	                                <div class="form-group">
 	                                    <div class="form-line">
 	                                        <label>VAT(%)</label>
-	                                        <input name="Vat" type="text" class="form-control" placeholder="Nhập VAT(%)">
+	                                        <input name="Vat" type="text" id="Vat" class="form-control" placeholder="Nhập VAT(%)">
 	                                    </div>
 	                                </div>
 	                            </div>
@@ -103,7 +103,7 @@
 	                                <div class="form-group">
 	                                    <div class="form-line">
 	                                        <label>Thành tiền</label>
-	                                        <input type="text" name="ThanhTien" class="form-control" placeholder="Nhập thành tiền">
+	                                        <input type="text" name="ThanhTien" class="form-control" placeholder="Nhập thành tiền" id="ThanhTien">
 	                                    </div>
 	                                </div>
 	                            </div>
@@ -137,5 +137,18 @@
         echo "<script type='text/javascript'>alert('$alert');</script>"; 
     }
 ?>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+  $("#ThanhTien").click(function(){
+    	var SoLuong = $('#SoLuong').val();
+    	var DonGia = $('#DonGia').val();
+    	var Vat = $('#Vat').val();
+    	var ThanhTien = (SoLuong*DonGia)-(SoLuong*DonGia*Vat)/100;
+    	$('#ThanhTien').val(ThanhTien);
+  });
+});
+</script>
 
 <?php require(__DIR__.'/layouts/Footer.php'); ?>
