@@ -59,6 +59,7 @@ $route['xu-ly-dang-nhap'] = 'DangNhap/Login';
 $route['dang-xuat'] = 'DangXuat';
 
 
+//Tang thiet bi
 $route['tang-thiet-bi'] = 'TangThietBi/index';
 $route['tang-thiet-bi/them'] = 'TangThietBi/ThemChungTu';
 
@@ -81,3 +82,6 @@ $route['tang-thiet-bi/chi-tiet/sua-chi-tiet/(:any)/(:any)']  = "TangThietBi/SuaC
 
 $route['tang-thiet-bi/xuat-phieu-nhap/(:any)'] = "TangThietBi/Excel_export/index/$1";
 $route['tang-thiet-bi/xuat-phieu-kiem-nhap/(:any)'] = "TangThietBi/Excel_export/KiemNhap/$1";
+
+//Dieu chuyen
+$route['theo-doi-dieu-chuyen'] = "TheoDoiDieuChuyen/index";

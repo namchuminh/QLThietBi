@@ -273,11 +273,24 @@
                         </a>
                     </li>
                     <li>
-                        <a href="<?php echo base_url('tang-thiet-bi/'); ?>">
-                            <i class="material-icons">layers</i>
-                            <span>Nhập tăng thiết bị dạy học</span>
+                        <a href="javascript:void(0);" class="menu-toggle waves-effect waves-block">
+                            <i class="material-icons">widgets</i>
+                            <span>Thiết Bị</span>
                         </a>
+                        <ul class="ml-menu" style="display: none;">
+                            <li>
+                                <a href="<?php echo base_url('tang-thiet-bi/'); ?>" class="waves-effect waves-block">
+                                    <span>Nhập tăng thiết bị dạy học</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="<?php echo base_url('theo-doi-dieu-chuyen/'); ?>" class="waves-effect waves-block">
+                                    <span>Theo dõi, điều chuyển thiết bị</span>
+                                </a>
+                            </li>
+                        </ul>
                     </li>
+
                     
                 </ul>
             </div>
