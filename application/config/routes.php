@@ -85,3 +85,13 @@ $route['tang-thiet-bi/xuat-phieu-kiem-nhap/(:any)'] = "TangThietBi/Excel_export/
 
 //Dieu chuyen
 $route['theo-doi-dieu-chuyen'] = "TheoDoiDieuChuyen/index";
+$route['theo-doi-dieu-chuyen/dieu-chuyen'] = "TheoDoiDieuChuyen/index/ThemDieuChuyen";
+$route['theo-doi-dieu-chuyen/xoa-dieu-chuyen/(:any)'] = "TheoDoiDieuChuyen/XoaDieuChuyen/index/$1";
+$route['theo-doi-dieu-chuyen/sua-dieu-chuyen/(:any)'] = "TheoDoiDieuChuyen/SuaDieuChuyen/index/$1";
+$route['theo-doi-dieu-chuyen/sua-dieu-chuyen/sua/(:any)'] = "TheoDoiDieuChuyen/SuaDieuChuyen/SuaDieuChuyen/$1";
+$route['theo-doi-dieu-chuyen/kho/(:any)'] = "TheoDoiDieuChuyen/index/Kho/$1";
+$route['theo-doi-dieu-chuyen/thiet-bi/(:any)/(:any)'] = "TheoDoiDieuChuyen/index/thietbi/$1/$2";
+
+$route['theo-doi-dieu-chuyen/xuat-nhat-ky/(:any)'] = "TheoDoiDieuChuyen/Excel_Export_DieuChuyen/index/$1";
+$route['theo-doi-dieu-chuyen/xuat-xac-nhan-dieu-chuyen/(:any)'] = "TheoDoiDieuChuyen/Excel_Export_DieuChuyen/XacNhanDieuChuyen/$1";
+

@@ -38,9 +38,9 @@ class Model_ThemChiTiet extends CI_Model {
 		return $result->result_array();
 		
 	}
-	public function ThemChiTiet($MaChungTu, $MaMonHoc, $KhoiLop, $MaThietBi, $SoLuong, $DonGia, $MaQuanLyThietBi, $DonViTinh, $Vat, $ThanhTien, $ThoiGianKhauHao){
-		$sql = "INSERT INTO `chitiethoadon`(`MaChungTu`, `MaMonHoc`, `KhoiLop`, `MaThietBi`, `SoLuong`, `DonGia`, `MaCaBiet`, `DonViTinh`, `Vat`, `ThanhTien`, `ThoiGianKhauHao`) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
-		$result = $this->db->query($sql, array($MaChungTu, $MaMonHoc, $KhoiLop, $MaThietBi, $SoLuong, $DonGia, $MaQuanLyThietBi, $DonViTinh, $Vat, $ThanhTien, $ThoiGianKhauHao));
+	public function ThemChiTiet($MaChungTu, $MaMonHoc, $KhoiLop, $MaThietBi, $SoLuong, $DonGia, $MaQuanLyThietBi, $DonViTinh, $Vat, $ThanhTien, $ThoiGianKhauHao,$MaKho){
+		$sql = "INSERT INTO `chitiethoadon`(`MaChungTu`, `MaMonHoc`, `KhoiLop`, `MaThietBi`, `SoLuong`, `DonGia`, `MaCaBiet`, `DonViTinh`, `Vat`, `ThanhTien`, `ThoiGianKhauHao`,MaKho) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
+		$result = $this->db->query($sql, array($MaChungTu, $MaMonHoc, $KhoiLop, $MaThietBi, $SoLuong, $DonGia, $MaQuanLyThietBi, $DonViTinh, $Vat, $ThanhTien, $ThoiGianKhauHao,$MaKho));
 		return $result;
 	}
 

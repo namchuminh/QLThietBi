@@ -41,8 +41,9 @@ class ChiTiet extends CI_Controller {
 		$MonHoc = $this->Model_ThemChiTiet->Get_MonHoc();
 		$ThietBi = $this->Model_ThemChiTiet->Get_ThietBi();
 		$QuanLyThietBi = $this->Model_ThemChiTiet->Get_QuanLyThietBi();
-
+		$ChungTu = $this->Model_TangThietBi->Get_ChungTuById($MaChungTu);
 		
+		$MaKho = $ChungTu[0]['MaKho'];
 		$MaMonHoc = $this->input->post('MonHoc');
 		$KhoiLop = $this->input->post('KhoiLop');
 		$MaThietBi = $this->input->post('MaThietBi');
@@ -55,7 +56,7 @@ class ChiTiet extends CI_Controller {
 		$ThoiGianKhauHao = $this->input->post('ThoiGianKhauHao');
 		if(gettype($this->check_null($MaMonHoc, $KhoiLop, $MaThietBi, $SoLuong, $DonGia, $MaQuanLyThietBi, $DonViTinh, $Vat, $ThanhTien, $ThoiGianKhauHao))=="boolean"){
 			if (gettype($this->check_number($SoLuong, $DonGia, $Vat, $ThanhTien, $ThoiGianKhauHao))=="boolean") {
-				$result = $this->Model_ThemChiTiet->ThemChiTiet($MaChungTu, $MaMonHoc, $KhoiLop, $MaThietBi, $SoLuong, $DonGia, $MaQuanLyThietBi, $DonViTinh, $Vat, $ThanhTien, $ThoiGianKhauHao);
+				$result = $this->Model_ThemChiTiet->ThemChiTiet($MaChungTu, $MaMonHoc, $KhoiLop, $MaThietBi, $SoLuong, $DonGia, $MaQuanLyThietBi, $DonViTinh, $Vat, $ThanhTien, $ThoiGianKhauHao, $MaKho);
 				if($result==True){
 					$data = array(
 						
