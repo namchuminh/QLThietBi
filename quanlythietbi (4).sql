@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th4 03, 2023 lúc 03:51 PM
+-- Thời gian đã tạo: Th4 10, 2023 lúc 03:16 PM
 -- Phiên bản máy phục vụ: 10.4.25-MariaDB
 -- Phiên bản PHP: 8.1.10
 
@@ -39,16 +39,17 @@ CREATE TABLE `chitiethoadon` (
   `DonViTinh` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `Vat` int(11) NOT NULL,
   `ThanhTien` int(11) NOT NULL,
-  `ThoiGianKhauHao` varchar(100) COLLATE utf8_unicode_ci NOT NULL
+  `ThoiGianKhauHao` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `MaKho` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `chitiethoadon`
 --
 
-INSERT INTO `chitiethoadon` (`MaChiTietHoaDon`, `MaChungTu`, `MaMonHoc`, `KhoiLop`, `MaThietBi`, `SoLuong`, `DonGia`, `MaCaBiet`, `DonViTinh`, `Vat`, `ThanhTien`, `ThoiGianKhauHao`) VALUES
-(12, 7, 5, 'Lớp 8', 7, 1, 2, 'SL', 'Bộ', 12, 12345, '1'),
-(13, 10, 6, 'Lớp 9', 10, 1, 2, 'SL', 'Cái', 1, 2, '3');
+INSERT INTO `chitiethoadon` (`MaChiTietHoaDon`, `MaChungTu`, `MaMonHoc`, `KhoiLop`, `MaThietBi`, `SoLuong`, `DonGia`, `MaCaBiet`, `DonViTinh`, `Vat`, `ThanhTien`, `ThoiGianKhauHao`, `MaKho`) VALUES
+(32, 7, 5, 'Lớp 8', 8, 1808, 2000, 'SL', 'Cái', 10, 3254400, '1', 9),
+(56, 7, 5, 'Lớp 8', 8, 2, 2000, 'SL', 'Cái', 10, 3600, '1', 5);
 
 -- --------------------------------------------------------
 
@@ -76,6 +77,44 @@ CREATE TABLE `chungtu` (
 INSERT INTO `chungtu` (`MaChungTu`, `NgayNhap`, `SoPhieu`, `LyDoTang`, `DienGiai`, `MaKho`, `MaNhaCungCap`, `SohdTaiChinh`, `KyHieu`, `Ngayhd`) VALUES
 (7, '2023-04-01 00:00:00', 2, 'Được mượn sử dụng', 'bbbaa4', 8, 1, 3, '3', '2023-05-05 00:00:00'),
 (10, '2023-04-13 00:00:00', 1, 'Được viện trợ, cho tặng', 'bbb', 6, 1, 1, '2', '2023-04-21 00:00:00');
+
+--
+-- Bẫy `chungtu`
+--
+DELIMITER $$
+CREATE TRIGGER `after_ud` AFTER UPDATE ON `chungtu` FOR EACH ROW BEGIN
+        UPDATE chitiethoadon SET chitiethoadon.MaKho = new.MaKho WHERE chitiethoadon.MaChungTu= old.MaChungTu;
+    END
+$$
+DELIMITER ;
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `dieuchuyen`
+--
+
+CREATE TABLE `dieuchuyen` (
+  `MaDieuChuyen` int(11) NOT NULL,
+  `MaThietBi` int(11) NOT NULL,
+  `NgayBanGiao` datetime NOT NULL,
+  `SoBienBan` int(11) NOT NULL,
+  `NguoiBanGiao` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `NguoiTiepNhan` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `MaKho` int(11) NOT NULL,
+  `TinhTrang` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `GhiChu` text COLLATE utf8_unicode_ci DEFAULT NULL,
+  `SoLuongDieuChuyen` int(11) NOT NULL,
+  `MaChiTietHoaDonMoi` int(11) NOT NULL,
+  `MaChiTietHoaDonCu` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `dieuchuyen`
+--
+
+INSERT INTO `dieuchuyen` (`MaDieuChuyen`, `MaThietBi`, `NgayBanGiao`, `SoBienBan`, `NguoiBanGiao`, `NguoiTiepNhan`, `MaKho`, `TinhTrang`, `GhiChu`, `SoLuongDieuChuyen`, `MaChiTietHoaDonMoi`, `MaChiTietHoaDonCu`) VALUES
+(27, 8, '2023-04-13 00:00:00', 2, 'Nguyen van A', 'Nguyen Van D', 5, 'a', 'a', 2, 56, 32);
 
 -- --------------------------------------------------------
 
@@ -266,6 +305,12 @@ ALTER TABLE `chungtu`
   ADD PRIMARY KEY (`MaChungTu`);
 
 --
+-- Chỉ mục cho bảng `dieuchuyen`
+--
+ALTER TABLE `dieuchuyen`
+  ADD PRIMARY KEY (`MaDieuChuyen`);
+
+--
 -- Chỉ mục cho bảng `kho`
 --
 ALTER TABLE `kho`
@@ -309,13 +354,19 @@ ALTER TABLE `thietbi`
 -- AUTO_INCREMENT cho bảng `chitiethoadon`
 --
 ALTER TABLE `chitiethoadon`
-  MODIFY `MaChiTietHoaDon` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `MaChiTietHoaDon` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
 
 --
 -- AUTO_INCREMENT cho bảng `chungtu`
 --
 ALTER TABLE `chungtu`
   MODIFY `MaChungTu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT cho bảng `dieuchuyen`
+--
+ALTER TABLE `dieuchuyen`
+  MODIFY `MaDieuChuyen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT cho bảng `kho`
