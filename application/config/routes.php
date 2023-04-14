@@ -95,3 +95,21 @@ $route['theo-doi-dieu-chuyen/thiet-bi/(:any)/(:any)'] = "TheoDoiDieuChuyen/index
 $route['theo-doi-dieu-chuyen/xuat-nhat-ky/(:any)'] = "TheoDoiDieuChuyen/Excel_Export_DieuChuyen/index/$1";
 $route['theo-doi-dieu-chuyen/xuat-xac-nhan-dieu-chuyen/(:any)'] = "TheoDoiDieuChuyen/Excel_Export_DieuChuyen/XacNhanDieuChuyen/$1";
 
+
+//ghi nhan hong
+$route['ghi-nhan-thiet-bi-hong'] = "GhiNhanThietBiHong/GhiNhanThietBiHong";
+$route['ghi-nhan-thiet-bi-hong/load-data/(:any)/(:any)'] = "GhiNhanThietBiHong/GhiNhanThietBiHong/Load_Data/$1/$2";
+$route['ghi-nhan-thiet-bi-hong/them'] = "GhiNhanThietBiHong/GhiNhanThietBiHong/BaoHong";
+$route['ghi-nhan-thiet-bi-hong/them-thiet-bi'] = "GhiNhanThietBiHong/GhiNhanThietBiHong/ThemBaoHong";
+$route['ghi-nhan-thiet-bi-hong/liet-ke'] = "GhiNhanThietBiHong/GhiNhanThietBiHong/LietKe";
+$route['ghi-nhan-thiet-bi-hong/khoi-phuc/(:any)'] = "GhiNhanThietBiHong/GhiNhanThietBiHong/KhoiPhuc/$1";
+$route['ghi-nhan-thiet-bi-hong/xuat-excel'] = "GhiNhanThietBiHong/Xuat_Excel";
+
+//ghi nhan mat
+
+$route['ghi-nhan-thiet-bi-mat'] = "GhiNhanThietBiMat/GhiNhanThietBiMat";
+$route['ghi-nhan-thiet-bi-mat/khoi-phuc/(:any)'] = "GhiNhanThietBiMat/GhiNhanThietBiMat/KhoiPhuc/$1";
+$route['ghi-nhan-thiet-bi-mat/them'] = "GhiNhanThietBiMat/GhiNhanThietBiMat/BaoMat";
+$route['ghi-nhan-thiet-bi-mat/them-bao-mat'] = "GhiNhanThietBiMat/GhiNhanThietBiMat/ThemBaoMat";
+$route['ghi-nhan-thiet-bi-mat/liet-ke'] = "GhiNhanThietBiMat/GhiNhanThietBiMat/LietKe";
+$route['ghi-nhan-thiet-bi-mat/xuat-excel'] = "GhiNhanThietBiMat/Xuat_Excel";

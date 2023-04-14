@@ -142,7 +142,7 @@
                                                 <button type="submit" class="btn btn-primary waves-effect m-r-20">Chỉnh sửa</button>
                                                 <!-- <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">Đóng</button> -->
                                             </div>
-
+                                            
                                         </div>
 
                                     </div>
@@ -170,7 +170,7 @@ $(document).ready(function(){
   $("#MonHoc").on('change', function (){
         var MonHoc = $('#MonHoc').val();
         var op = '<option value="0">Chọn thiết bị</option>';
-        $.post("http://localhost/QLThietBi/theo-doi-dieu-chuyen/kho/"+MonHoc, function(data){
+        $.post("<?php echo base_url("/theo-doi-dieu-chuyen/kho/")?>"+MonHoc, function(data){
             $("#MaKho").html(data);
             $("#MaKho").html($("#MaKho").html());
             $("#MaThietBi").html(op);
@@ -183,7 +183,7 @@ $(document).ready(function(){
   $("#MaKho").on('change', function (){
         var MonHoc = $('#MonHoc').val();
         var MaKho = $('#MaKho').val();
-        $.post("http://localhost/QLThietBi/theo-doi-dieu-chuyen/thiet-bi/"+MonHoc+"/"+MaKho, function(data){
+        $.post("<?php echo base_url("theo-doi-dieu-chuyen/thiet-bi/")?>"+MonHoc+"/"+MaKho, function(data){
             $("#MaThietBi").html(data);
             $("#MaThietBi").html($("#MaThietBi").html());
         });

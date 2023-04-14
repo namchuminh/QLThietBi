@@ -288,6 +288,16 @@
                                     <span>Theo dõi, điều chuyển thiết bị</span>
                                 </a>
                             </li>
+                            <li>
+                                <a href="<?php echo base_url('ghi-nhan-thiet-bi-hong'); ?>" class="waves-effect waves-block">
+                                    <span>Ghi nhận thiết bị hỏng</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="<?php echo base_url('ghi-nhan-thiet-bi-mat'); ?>" class="waves-effect waves-block">
+                                    <span>Ghi nhận thiết bị mất</span>
+                                </a>
+                            </li>
                         </ul>
                     </li>
 
