@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th4 10, 2023 lúc 03:16 PM
+-- Thời gian đã tạo: Th4 14, 2023 lúc 04:53 PM
 -- Phiên bản máy phục vụ: 10.4.25-MariaDB
 -- Phiên bản PHP: 8.1.10
 
@@ -48,8 +48,8 @@ CREATE TABLE `chitiethoadon` (
 --
 
 INSERT INTO `chitiethoadon` (`MaChiTietHoaDon`, `MaChungTu`, `MaMonHoc`, `KhoiLop`, `MaThietBi`, `SoLuong`, `DonGia`, `MaCaBiet`, `DonViTinh`, `Vat`, `ThanhTien`, `ThoiGianKhauHao`, `MaKho`) VALUES
-(32, 7, 5, 'Lớp 8', 8, 1808, 2000, 'SL', 'Cái', 10, 3254400, '1', 9),
-(56, 7, 5, 'Lớp 8', 8, 2, 2000, 'SL', 'Cái', 10, 3600, '1', 5);
+(32, 7, 5, 'Lớp 8', 8, 1808, 2000, 'SL', 'Cái', 10, 3254400, '1', 8),
+(56, 7, 5, 'Lớp 8', 8, 2, 2000, 'SL', 'Cái', 10, 3600, '1', 7);
 
 -- --------------------------------------------------------
 
@@ -75,18 +75,8 @@ CREATE TABLE `chungtu` (
 --
 
 INSERT INTO `chungtu` (`MaChungTu`, `NgayNhap`, `SoPhieu`, `LyDoTang`, `DienGiai`, `MaKho`, `MaNhaCungCap`, `SohdTaiChinh`, `KyHieu`, `Ngayhd`) VALUES
-(7, '2023-04-01 00:00:00', 2, 'Được mượn sử dụng', 'bbbaa4', 8, 1, 3, '3', '2023-05-05 00:00:00'),
-(10, '2023-04-13 00:00:00', 1, 'Được viện trợ, cho tặng', 'bbb', 6, 1, 1, '2', '2023-04-21 00:00:00');
-
---
--- Bẫy `chungtu`
---
-DELIMITER $$
-CREATE TRIGGER `after_ud` AFTER UPDATE ON `chungtu` FOR EACH ROW BEGIN
-        UPDATE chitiethoadon SET chitiethoadon.MaKho = new.MaKho WHERE chitiethoadon.MaChungTu= old.MaChungTu;
-    END
-$$
-DELIMITER ;
+(7, '2023-04-01 00:00:00', 2, 'Được mượn sử dụng', 'bbbaa4', 8, 1, 3, 'abc', '2023-05-05 00:00:00'),
+(10, '2023-04-13 00:00:00', 1, 'Được viện trợ, cho tặng', 'bbb', 7, 1, 1, '2', '2023-04-21 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -115,6 +105,59 @@ CREATE TABLE `dieuchuyen` (
 
 INSERT INTO `dieuchuyen` (`MaDieuChuyen`, `MaThietBi`, `NgayBanGiao`, `SoBienBan`, `NguoiBanGiao`, `NguoiTiepNhan`, `MaKho`, `TinhTrang`, `GhiChu`, `SoLuongDieuChuyen`, `MaChiTietHoaDonMoi`, `MaChiTietHoaDonCu`) VALUES
 (27, 8, '2023-04-13 00:00:00', 2, 'Nguyen van A', 'Nguyen Van D', 5, 'a', 'a', 2, 56, 32);
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `ghinhanthietbihong`
+--
+
+CREATE TABLE `ghinhanthietbihong` (
+  `MaGhiNhanHong` int(11) NOT NULL,
+  `MaMonHoc` int(11) NOT NULL,
+  `MaKho` int(11) NOT NULL,
+  `MaThietBi` int(11) NOT NULL,
+  `SoLuongHong` int(11) NOT NULL,
+  `NguoiPhatHien` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `NgayPhatHien` date NOT NULL,
+  `LyDoHong` text COLLATE utf8_unicode_ci NOT NULL,
+  `SoBienBan` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `ghinhanthietbihong`
+--
+
+INSERT INTO `ghinhanthietbihong` (`MaGhiNhanHong`, `MaMonHoc`, `MaKho`, `MaThietBi`, `SoLuongHong`, `NguoiPhatHien`, `NgayPhatHien`, `LyDoHong`, `SoBienBan`) VALUES
+(7, 5, 7, 8, 5, 'Giang A B', '2023-04-16', 'aaa', 2),
+(8, 5, 8, 8, 8, 'nguyen van C', '2023-04-14', 'ư', 10),
+(13, 5, 8, 8, 10, 'Giang A c d', '2023-05-05', 'aaa ccc', 10);
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `ghinhanthietbimat`
+--
+
+CREATE TABLE `ghinhanthietbimat` (
+  `MaGhiNhanMat` int(11) NOT NULL,
+  `MaMonHoc` int(11) NOT NULL,
+  `MaKho` int(11) NOT NULL,
+  `MaThietBi` int(11) NOT NULL,
+  `SoLuongMat` int(11) NOT NULL,
+  `NguoiPhatHien` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `NgayPhatHien` date NOT NULL,
+  `LyDoMat` text COLLATE utf8_unicode_ci NOT NULL,
+  `SoBienBan` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `ghinhanthietbimat`
+--
+
+INSERT INTO `ghinhanthietbimat` (`MaGhiNhanMat`, `MaMonHoc`, `MaKho`, `MaThietBi`, `SoLuongMat`, `NguoiPhatHien`, `NgayPhatHien`, `LyDoMat`, `SoBienBan`) VALUES
+(3, 5, 8, 8, 2, 'nguyen van a', '2023-04-23', 'ư', 10),
+(4, 5, 7, 8, 2, 'nguyen van C', '2023-04-01', 'ư', 10);
 
 -- --------------------------------------------------------
 
@@ -311,6 +354,18 @@ ALTER TABLE `dieuchuyen`
   ADD PRIMARY KEY (`MaDieuChuyen`);
 
 --
+-- Chỉ mục cho bảng `ghinhanthietbihong`
+--
+ALTER TABLE `ghinhanthietbihong`
+  ADD PRIMARY KEY (`MaGhiNhanHong`);
+
+--
+-- Chỉ mục cho bảng `ghinhanthietbimat`
+--
+ALTER TABLE `ghinhanthietbimat`
+  ADD PRIMARY KEY (`MaGhiNhanMat`);
+
+--
 -- Chỉ mục cho bảng `kho`
 --
 ALTER TABLE `kho`
@@ -367,6 +422,18 @@ ALTER TABLE `chungtu`
 --
 ALTER TABLE `dieuchuyen`
   MODIFY `MaDieuChuyen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+
+--
+-- AUTO_INCREMENT cho bảng `ghinhanthietbihong`
+--
+ALTER TABLE `ghinhanthietbihong`
+  MODIFY `MaGhiNhanHong` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+--
+-- AUTO_INCREMENT cho bảng `ghinhanthietbimat`
+--
+ALTER TABLE `ghinhanthietbimat`
+  MODIFY `MaGhiNhanMat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT cho bảng `kho`
