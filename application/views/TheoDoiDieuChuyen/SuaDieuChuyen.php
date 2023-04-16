@@ -132,14 +132,15 @@
                                             
                                             <div class="modal-footer">
                                                 <div>
-                                            <?php if(isset($error)){ ?>
-                                                <p style="color: red;"><?php echo $error; ?></p>
-                                            <?php } ?>
-                                            <?php if(isset($alert)){ ?>
-                                                <p style="color: green;"><?php echo $alert; ?></p>
-                                            <?php } ?>
-                                            </div>
-                                                <button type="submit" class="btn btn-primary waves-effect m-r-20">Chỉnh sửa</button>
+                                                    <?php if(isset($error)){ ?>
+                                                        <p style="color: red;"><?php echo $error; ?></p>
+                                                    <?php } ?>
+                                                    <?php if(isset($alert)){ ?>
+                                                        <p style="color: green;"><?php echo $alert; ?></p>
+                                                    <?php } ?>
+                                                </div>
+                                                <a href="<?php echo base_url('theo-doi-dieu-chuyen/'); ?>" class="btn btn-primary waves-effect">Quay Lại</a>
+                                                <button type="submit" class="btn btn-primary waves-effect">Chỉnh sửa</button>
                                                 <!-- <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">Đóng</button> -->
                                             </div>
                                             
