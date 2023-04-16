@@ -46,13 +46,13 @@ class Model_TheoDoiDieuChuyen extends CI_Model {
 	}
 	public function Update_SoLuong($SoLuongDieuChuyen, $MaThietBi, $MaKho)
 	{
-		$sql = "UPDATE `chitiethoadon` SET `SoLuong`= (SoLuong + ?), ThanhTien = SoLuong*DonGia - (SoLuong*DonGia*Vat)/100  WHERE MaThietBi = ? AND MaKho = ?";
+		$sql = "UPDATE `chitiethoadon` SET `SoLuong`= (SoLuong + ?), ThanhTien = SoLuong*DonGia + (SoLuong*DonGia*Vat)/100  WHERE MaThietBi = ? AND MaKho = ?";
 		$result = $this->db->query($sql, array($SoLuongDieuChuyen, $MaThietBi, $MaKho));
 		return $result;
 	}
 	public function Update_SoLuong2($SoLuongDieuChuyen, $MaThietBi, $MaKhoCu)
 	{
-		$sql = "UPDATE `chitiethoadon` SET `SoLuong`= (SoLuong - ?), ThanhTien = SoLuong *DonGia - (SoLuong*DonGia*Vat)/100  WHERE MaThietBi = ? AND MaKho = ?";
+		$sql = "UPDATE `chitiethoadon` SET `SoLuong`= (SoLuong - ?), ThanhTien = SoLuong *DonGia + (SoLuong*DonGia*Vat)/100  WHERE MaThietBi = ? AND MaKho = ?";
 		$result = $this->db->query($sql, array($SoLuongDieuChuyen, $MaThietBi, $MaKhoCu));
 		return $result;
 	}
@@ -106,7 +106,7 @@ class Model_TheoDoiDieuChuyen extends CI_Model {
 	}
 	public function Update_ChiTiet($SoLuong, $MaChiTietHoaDon)
 	{
-		$sql = "UPDATE chitiethoadon set SoLuong = SoLuong + ?, ThanhTien = ((SoLuong*DonGia) - (SoLuong*DonGia*Vat)/100) WHERE MaChiTietHoaDon = ?";
+		$sql = "UPDATE chitiethoadon set SoLuong = SoLuong + ?, ThanhTien = ((SoLuong*DonGia) + (SoLuong*DonGia*Vat)/100) WHERE MaChiTietHoaDon = ?";
 		$result = $this->db->query($sql, array($SoLuong, $MaChiTietHoaDon));
 		return $result;
 	}

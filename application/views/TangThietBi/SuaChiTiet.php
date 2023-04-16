@@ -168,7 +168,7 @@ $(document).ready(function(){
         var SoLuong = $('#SoLuong').val();
         var DonGia = $('#DonGia').val();
         var Vat = $('#Vat').val();
-        var ThanhTien = (SoLuong*DonGia)-(SoLuong*DonGia*Vat)/100;
+        var ThanhTien = (SoLuong*DonGia)+(SoLuong*DonGia*Vat)/100;
         $('#ThanhTien').val(ThanhTien);
   });
 });

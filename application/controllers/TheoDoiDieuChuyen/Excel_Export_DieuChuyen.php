@@ -29,7 +29,7 @@ class Excel_Export_DieuChuyen extends CI_Controller {
 			foreach ($DieuChuyen as $key => $value){
 				$date= substr($value['NgayBanGiao'], 0, 10);
 			    $excel2->getActiveSheet()
-			    ->setCellValue('A',(1+$key))
+			    ->setCellValue('A'.(7+$key),($key+1))
 			    ->setCellValue('B'.(7+$key), $value['SoBienBan'])
 				->setCellValue('C'.(7+$key), $date)
 				->setCellValue('D'.(7+$key), $value['MaThietBi'])

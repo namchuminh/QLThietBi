@@ -13,7 +13,7 @@ class Xuat_Excel extends CI_Controller {
 	{
 		$BaoHong = $this->Model_GhiNhanThietBiHong->GetAll_BaoHong();
 		$excel2 = PHPExcel_IOFactory::createReader('Excel2007');
-		$excel2 = $excel2->load("C:\\xampp\htdocs\QLThietBi\application\controllers\GhiNhanThietBiHong\Excel_File\baohong.xlsx"); // Empty Sheet
+		$excel2 = $excel2->load("C:\\xampp\htdocs\QLThietBi\application\controllers\GhiNhanThietBiMat\Excel_File\BaoMat.xls"); // Empty Sheet
 		$excel2->setActiveSheetIndex(0);
 		//var_dump($dates[0]);
 		$excel2->getActiveSheet()->setCellValue('F3', 'Ngày: '.date("d/m/Y"));
