@@ -10,7 +10,7 @@
                 <div class="card">
                     <form action="<?php echo base_url("ghi-nhan-thiet-bi-mat/them-bao-mat"); ?>" method="POST">
                     <div class="header">
-                        
+                        <a href="<?php echo base_url('ghi-nhan-thiet-bi-mat/'); ?>" class="btn btn-primary waves-effect m-r-20" >Quay Lại</a>
                     </div>
                     <div class="body">
                         <div class="row clearfix">
@@ -93,31 +93,27 @@
                         <p style="color: green;"><?php echo $alert; ?></p>
                     <?php } ?>
                     <div class="row clearfix">
-                        <div class="header">
-
-                        <h2>
-                            Danh sách
-                        </h2>
+                        <div class="body table-responsive" style="width: 100%">
+                            <table id="example" class="display table" style="width:100%">
+                                <thead>
+                                    <tr>
+                                        <th>Mã Thiết Bị</th>
+                                        <th>Tên Thiết Bị</th>
+                                        <th>Ký Hiệu</th>
+                                        <th>Chọn</th>
+                                    </tr>
+                                </thead>
+                                <tfoot id="Data">
+                                     <!-- <tr>
+                                        <td>Name</td>
+                                        <td>Position</td>
+                                        <td>Office</td>
+                                        <td><p>a</p></td>
+                                    </tr>  -->
+                                </tfoot>
+                            </table> 
+                        </div>
                     </div>
-                    </div>
-                    <table id="example" class="display" style="width:100%">
-                    <thead>
-                        <tr>
-                            <th>Mã Thiết Bị</th>
-                            <th>Tên Thiết Bị</th>
-                            <th>Ký Hiệu</th>
-                            <th>Chọn</th>
-                        </tr>
-                    </thead>
-                    <tfoot id="Data">
-                         <!-- <tr>
-                            <td>Name</td>
-                            <td>Position</td>
-                            <td>Office</td>
-                            <td><p>a</p></td>
-                        </tr>  -->
-                    </tfoot>
-                </table> 
                     </div>
                     </div>
 
