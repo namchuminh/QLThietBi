@@ -298,9 +298,35 @@
                                     <span>Ghi nhận thiết bị mất</span>
                                 </a>
                             </li>
+                            <li>
+                                <a href="<?php echo base_url('sua-chua-thiet-bi'); ?>" class="waves-effect waves-block">
+                                    <span>Sửa chữa thiết bị</span>
+                                </a>
+                            </li>
                         </ul>
                     </li>
-
+                    <a href="javascript:void(0);" class="menu-toggle waves-effect waves-block" style="align-items: center;" >
+                            <i class="fa-solid fa-calendar"></i>
+                           <!--  <i class="material-icons">widgets</i> -->
+                            <span>Mượn Trả</span>
+                    </a>
+                    <ul class="ml-menu" style="display: none;">
+                        <li>
+                            <a href="<?php echo base_url('muon-tra'); ?>" class="waves-effect waves-block">
+                                <span>Giáo viên mượn trả thiết bị dạy học</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="<?php echo base_url('muon-tra/nhat-ky'); ?>" class="waves-effect waves-block">
+                                <span>Xem nhật ký mượn trả</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="<?php echo base_url('muon-phong-hoc'); ?>" class="waves-effect waves-block">
+                                <span>Mượn phòng học</span>
+                            </a>
+                        </li>
+                    </ul>
                     
                 </ul>
             </div>

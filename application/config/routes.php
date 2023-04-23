@@ -113,3 +113,47 @@ $route['ghi-nhan-thiet-bi-mat/them'] = "GhiNhanThietBiMat/GhiNhanThietBiMat/BaoM
 $route['ghi-nhan-thiet-bi-mat/them-bao-mat'] = "GhiNhanThietBiMat/GhiNhanThietBiMat/ThemBaoMat";
 $route['ghi-nhan-thiet-bi-mat/liet-ke'] = "GhiNhanThietBiMat/GhiNhanThietBiMat/LietKe";
 $route['ghi-nhan-thiet-bi-mat/xuat-excel'] = "GhiNhanThietBiMat/Xuat_Excel";
+
+
+
+$route['muon-tra'] = "MuonThietBiDayHoc/MuonThietBiDayHoc";
+$route['muon-tra/muon-thiet-bi'] = "MuonThietBiDayHoc/MuonThietBiDayHoc/MuonThietBi";
+$route['muon-tra/muon-thiet-bi/them'] = "MuonThietBiDayHoc/MuonThietBiDayHoc/ThemMuonThietBi";
+$route['muon-tra/muon-thiet-bi/xoa/(:any)'] = "MuonThietBiDayHoc/MuonThietBiDayHoc/XoaMuonThietBi/$1";
+$route['muon-tra/muon-thiet-bi/sua/(:any)'] = "MuonThietBiDayHoc/MuonThietBiDayHoc/SuaMuonThietBi/$1";
+$route['muon-tra/gia-han/(:any)'] = "MuonThietBiDayHoc/MuonThietBiDayHoc/GiaHanMuonThietBi/$1";
+$route['muon-tra/gia-han/(:any)'] = "MuonThietBiDayHoc/MuonThietBiDayHoc/GiaHanMuonThietBi/$1";
+$route['muon-tra/liet-ke'] = "MuonThietBiDayHoc/MuonThietBiDayHoc/LietKe";
+$route['muon-tra/them-chi-tiet/(:any)'] = "MuonThietBiDayHoc/MuonThietBiDayHoc/ThemChiTiet/$1";
+$route['muon-tra/them-chi-tiet/them/(:any)'] = "MuonThietBiDayHoc/MuonThietBiDayHoc/ThemChiTietThem/$1";
+$route['muon-tra/them-chi-tiet/xoa/(:any)/(:any)'] = "MuonThietBiDayHoc/MuonThietBiDayHoc/XoaChiTiet/$1/$2";
+$route['muon-tra/xuat-excel/(:any)'] = "MuonThietBiDayHoc/Xuat_Excel/index/$1";
+$route['muon-tra/muon-thiet-bi/thiet-bi/(:any)'] = "MuonThietBiDayHoc/MuonThietBiDayHoc/ThietBi/$1";
+$route['muon-tra/tra/(:any)'] = "MuonThietBiDayHoc/MuonThietBiDayHoc/TraThietBi/$1";
+$route['muon-tra/tra-thiet-bi/(:any)'] = "MuonThietBiDayHoc/MuonThietBiDayHoc/Tra/$1";
+
+
+
+$route['muon-tra/nhat-ky'] = "MuonThietBiDayHoc/NhatKyMuonTra";
+$route['muon-tra/nhat-ky/liet-ke'] = "MuonThietBiDayHoc/NhatKyMuonTra/LietKe";
+
+
+$route['muon-phong-hoc'] = "MuonPhongHoc/MuonPhongHoc";
+$route['muon-phong-hoc/muon'] = "MuonPhongHoc/MuonPhongHoc/Muon";
+$route['muon-phong-hoc/muon-phong'] = "MuonPhongHoc/MuonPhongHoc/MuonPhongHoc";
+$route['muon-phong-hoc/xoa/(:any)'] = "MuonPhongHoc/MuonPhongHoc/Xoa/$1";
+$route['muon-phong-hoc/liet-ke'] = "MuonPhongHoc/MuonPhongHoc/LietKe";
+
+
+
+
+$route['sua-chua-thiet-bi'] = "SuaChuaThietBi/SuaChuaThietBi";
+$route['sua-chua-thiet-bi/them'] = "SuaChuaThietBi/SuaChuaThietBi/ThemSua";
+$route['sua-chua-thiet-bi/gia-thiet-bi/(:any)/(:any)'] = "SuaChuaThietBi/SuaChuaThietBi/GiaThietBi/$1/$2";
+$route['sua-chua-thiet-bi/xoa-sua/(:any)'] = "SuaChuaThietBi/SuaChuaThietBi/XoaSua/$1";
+$route['sua-chua-thiet-bi/sua/(:any)'] = "SuaChuaThietBi/SuaChuaThietBi/Sua/$1";
+$route['sua-chua-thiet-bi/sua-chua/(:any)'] = "SuaChuaThietBi/SuaChuaThietBi/SuaSuaChua/$1";
+$route['sua-chua-thiet-bi/liet-ke'] = "SuaChuaThietBi/SuaChuaThietBi/LietKe";
+$route['sua-chua-thiet-bi/xuat-excel'] = "SuaChuaThietBi/Xuat_Excel";
+
+$route['sua-chua-thiet-bi/them-sua'] = "SuaChuaThietBi/SuaChuaThietBi/ThemSuaChiTiet";

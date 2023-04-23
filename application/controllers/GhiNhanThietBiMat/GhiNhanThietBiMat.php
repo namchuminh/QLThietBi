@@ -5,6 +5,9 @@ class GhiNhanThietBiMat extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
+		if(!$this->session->has_userdata('logged_in')){
+			return redirect(base_url("dang-nhap/"));
+		}
 		$this->load->model('TangThietBi/Model_TangThietBi');
 		$this->load->model('TangThietBi/Model_ThemChiTiet');
 		$this->load->model('TheoDoiDieuChuyen/Model_TheoDoiDieuChuyen');

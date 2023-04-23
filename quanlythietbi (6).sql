@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th4 14, 2023 lúc 04:53 PM
+-- Thời gian đã tạo: Th4 23, 2023 lúc 05:47 PM
 -- Phiên bản máy phục vụ: 10.4.25-MariaDB
 -- Phiên bản PHP: 8.1.10
 
@@ -48,8 +48,54 @@ CREATE TABLE `chitiethoadon` (
 --
 
 INSERT INTO `chitiethoadon` (`MaChiTietHoaDon`, `MaChungTu`, `MaMonHoc`, `KhoiLop`, `MaThietBi`, `SoLuong`, `DonGia`, `MaCaBiet`, `DonViTinh`, `Vat`, `ThanhTien`, `ThoiGianKhauHao`, `MaKho`) VALUES
-(32, 7, 5, 'Lớp 8', 8, 1808, 2000, 'SL', 'Cái', 10, 3254400, '1', 8),
-(56, 7, 5, 'Lớp 8', 8, 2, 2000, 'SL', 'Cái', 10, 3600, '1', 7);
+(32, 7, 5, 'Lớp 8', 8, 1808, 2000, 'SL', 'Cái', 10, 3977600, '1', 8),
+(56, 7, 5, 'Lớp 8', 8, 6, 2000, 'SL', 'Cái', 10, 13200, '1', 7),
+(57, 7, 5, 'Lớp 8', 8, 8, 2000, 'SL', 'Cái', 10, 14400, '1', 4);
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `chitietphieumuon`
+--
+
+CREATE TABLE `chitietphieumuon` (
+  `MaChiTietPhieuMuon` int(11) NOT NULL,
+  `MaMuonThietBi` int(11) NOT NULL,
+  `MaLop` int(11) NOT NULL,
+  `MaMonHoc` int(11) NOT NULL,
+  `SoTiet` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `TenBaiHoc` text COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `chitietphieumuon`
+--
+
+INSERT INTO `chitietphieumuon` (`MaChiTietPhieuMuon`, `MaMuonThietBi`, `MaLop`, `MaMonHoc`, `SoTiet`, `TenBaiHoc`) VALUES
+(3, 3, 6, 10, 'Tiet4', 'a'),
+(5, 4, 5, 5, 'Tiet4', 'Nguyen Van A');
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `chitietphieutra`
+--
+
+CREATE TABLE `chitietphieutra` (
+  `MaPhieuTra` int(11) NOT NULL,
+  `MaMuonThietBi` int(11) NOT NULL,
+  `NgayTraThietBi` date NOT NULL,
+  `SoLuongTra` int(11) NOT NULL,
+  `TinhTrangKhiTra` text COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `chitietphieutra`
+--
+
+INSERT INTO `chitietphieutra` (`MaPhieuTra`, `MaMuonThietBi`, `NgayTraThietBi`, `SoLuongTra`, `TinhTrangKhiTra`) VALUES
+(1, 3, '2023-04-23', 1, 'aa'),
+(2, 4, '2023-04-27', 1, 'aa');
 
 -- --------------------------------------------------------
 
@@ -104,7 +150,8 @@ CREATE TABLE `dieuchuyen` (
 --
 
 INSERT INTO `dieuchuyen` (`MaDieuChuyen`, `MaThietBi`, `NgayBanGiao`, `SoBienBan`, `NguoiBanGiao`, `NguoiTiepNhan`, `MaKho`, `TinhTrang`, `GhiChu`, `SoLuongDieuChuyen`, `MaChiTietHoaDonMoi`, `MaChiTietHoaDonCu`) VALUES
-(27, 8, '2023-04-13 00:00:00', 2, 'Nguyen van A', 'Nguyen Van D', 5, 'a', 'a', 2, 56, 32);
+(27, 8, '2023-04-13 00:00:00', 2, 'Nguyen van A', 'Nguyen Van D', 5, 'a', 'a', 2, 56, 32),
+(28, 8, '2023-04-21 00:00:00', 10, 'Nguyen van A', 'Nguyen Van D', 4, 'aa', 'aa', 8, 57, 56);
 
 -- --------------------------------------------------------
 
@@ -156,8 +203,7 @@ CREATE TABLE `ghinhanthietbimat` (
 --
 
 INSERT INTO `ghinhanthietbimat` (`MaGhiNhanMat`, `MaMonHoc`, `MaKho`, `MaThietBi`, `SoLuongMat`, `NguoiPhatHien`, `NgayPhatHien`, `LyDoMat`, `SoBienBan`) VALUES
-(3, 5, 8, 8, 2, 'nguyen van a', '2023-04-23', 'ư', 10),
-(4, 5, 7, 8, 2, 'nguyen van C', '2023-04-01', 'ư', 10);
+(3, 5, 8, 8, 2, 'nguyen van a', '2023-04-23', 'ư', 10);
 
 -- --------------------------------------------------------
 
@@ -187,6 +233,41 @@ INSERT INTO `kho` (`MaKho`, `TenKho`) VALUES
 (12, 'Kho TBDH môn Lịch Sử'),
 (13, 'Kho TBDH môn Tin học'),
 (14, 'Kho TBDH môn TD');
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `lophoc`
+--
+
+CREATE TABLE `lophoc` (
+  `MaLop` int(11) NOT NULL,
+  `TenLop` varchar(50) COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `lophoc`
+--
+
+INSERT INTO `lophoc` (`MaLop`, `TenLop`) VALUES
+(1, '10A1'),
+(2, '10A2'),
+(3, '10A3'),
+(4, '10A4'),
+(5, '10A5'),
+(6, '10A6'),
+(7, '11A1'),
+(8, '11A2'),
+(9, '11A3'),
+(10, '11A4'),
+(11, '11A5'),
+(12, '11A6'),
+(13, '12A1'),
+(14, '12A2'),
+(15, '12A3'),
+(16, '12A4'),
+(17, '12A5'),
+(18, '12A6');
 
 -- --------------------------------------------------------
 
@@ -222,6 +303,58 @@ INSERT INTO `monhoc` (`MaMonHoc`, `TenMonHoc`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Cấu trúc bảng cho bảng `muonphonghoc`
+--
+
+CREATE TABLE `muonphonghoc` (
+  `MaMuonPhongHoc` int(11) NOT NULL,
+  `MaPhongHoc` int(11) NOT NULL,
+  `BuoiHoc` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `TietHoc` int(11) NOT NULL,
+  `MaLop` int(11) NOT NULL,
+  `MaMon` int(11) NOT NULL,
+  `TenBaiHoc` text COLLATE utf8_unicode_ci NOT NULL,
+  `NgayBatDauMuon` date NOT NULL,
+  `NgayKetThucMuon` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `muonphonghoc`
+--
+
+INSERT INTO `muonphonghoc` (`MaMuonPhongHoc`, `MaPhongHoc`, `BuoiHoc`, `TietHoc`, `MaLop`, `MaMon`, `TenBaiHoc`, `NgayBatDauMuon`, `NgayKetThucMuon`) VALUES
+(2, 2, 'BuoiSang', 3, 5, 3, 'aaa', '2023-04-26', '2023-04-29'),
+(3, 1, 'BuoiChieu', 3, 11, 6, 'aaa', '2023-04-23', '2023-04-24');
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `muonthietbi`
+--
+
+CREATE TABLE `muonthietbi` (
+  `MaMuonThietBi` int(11) NOT NULL,
+  `NgayMuon` date NOT NULL,
+  `NgayTra` date NOT NULL,
+  `SoPhieu` int(11) NOT NULL,
+  `MaThietBi` int(11) NOT NULL,
+  `SoLuongMuon` int(11) NOT NULL,
+  `NguoiMuon` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `MaKho` int(11) NOT NULL,
+  `GhiChu` text COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `muonthietbi`
+--
+
+INSERT INTO `muonthietbi` (`MaMuonThietBi`, `NgayMuon`, `NgayTra`, `SoPhieu`, `MaThietBi`, `SoLuongMuon`, `NguoiMuon`, `MaKho`, `GhiChu`) VALUES
+(3, '2023-04-21', '2023-05-06', 2, 8, 1, 'Nguyen Van Thao', 4, 'a'),
+(4, '2023-04-29', '2023-04-30', 1, 8, 10, 'AN', 4, 'a');
+
+-- --------------------------------------------------------
+
+--
 -- Cấu trúc bảng cho bảng `nhacungcap`
 --
 
@@ -236,6 +369,25 @@ CREATE TABLE `nhacungcap` (
 
 INSERT INTO `nhacungcap` (`MaNhaCungCap`, `TenNhaCungCap`) VALUES
 (1, 'Nhà cung cấp khác');
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `phonghoc`
+--
+
+CREATE TABLE `phonghoc` (
+  `MaPhongHoc` int(11) NOT NULL,
+  `TenPhongHoc` varchar(100) COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `phonghoc`
+--
+
+INSERT INTO `phonghoc` (`MaPhongHoc`, `TenPhongHoc`) VALUES
+(1, 'Phòng Thực Hành Vật Lý'),
+(2, 'Phòng Thực Hành Hóa Học');
 
 -- --------------------------------------------------------
 
@@ -257,6 +409,38 @@ INSERT INTO `quanlythietbi` (`MaQuanLyThietBi`, `MaCaBiet`, `TenQuanLyThietBi`) 
 (1, '', 'Đăng ký quản lý mã cá biệt'),
 (2, 'SL', 'Chỉ quản lý số lượng'),
 (3, 'TH', 'Tiêu hao(hóa chất, vật tư, không thu hồi được...)');
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `suathietbi`
+--
+
+CREATE TABLE `suathietbi` (
+  `MaSuaThietBi` int(11) NOT NULL,
+  `MaKho` int(11) NOT NULL,
+  `MaThietBi` int(11) NOT NULL,
+  `NgayGhiNhan` date NOT NULL,
+  `NguoiPhatHien` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `NguoiGaySuCo` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `HienTuongHong` text COLLATE utf8_unicode_ci NOT NULL,
+  `NguoiGiaiQuyet` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `BienPhap` text COLLATE utf8_unicode_ci NOT NULL,
+  `NguoiThucHien` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `BoPhanSuaChua` text COLLATE utf8_unicode_ci NOT NULL,
+  `NguonKinhPhi` text COLLATE utf8_unicode_ci NOT NULL,
+  `KinhPhiSuaChua` int(11) NOT NULL,
+  `SoLuongHong` int(11) NOT NULL,
+  `KinhPhiSauSua` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `suathietbi`
+--
+
+INSERT INTO `suathietbi` (`MaSuaThietBi`, `MaKho`, `MaThietBi`, `NgayGhiNhan`, `NguoiPhatHien`, `NguoiGaySuCo`, `HienTuongHong`, `NguoiGiaiQuyet`, `BienPhap`, `NguoiThucHien`, `BoPhanSuaChua`, `NguonKinhPhi`, `KinhPhiSuaChua`, `SoLuongHong`, `KinhPhiSauSua`) VALUES
+(2, 4, 8, '2023-04-23', 'nguyen van a', 'Nguyen Van C', 'a', 'Nguyen Van D', 'a', 'Nguyen Van E', 'c', 'd', 10000, 10, 30000),
+(3, 4, 8, '2023-04-28', 'nguyen van a', 'Nguyen Van D', 'a', 'Nguyen Van D', 'a', 'Nguyen Van E', 'c', 'd', 10000, 5, 20000);
 
 -- --------------------------------------------------------
 
@@ -342,6 +526,18 @@ ALTER TABLE `chitiethoadon`
   ADD PRIMARY KEY (`MaChiTietHoaDon`);
 
 --
+-- Chỉ mục cho bảng `chitietphieumuon`
+--
+ALTER TABLE `chitietphieumuon`
+  ADD PRIMARY KEY (`MaChiTietPhieuMuon`);
+
+--
+-- Chỉ mục cho bảng `chitietphieutra`
+--
+ALTER TABLE `chitietphieutra`
+  ADD PRIMARY KEY (`MaPhieuTra`);
+
+--
 -- Chỉ mục cho bảng `chungtu`
 --
 ALTER TABLE `chungtu`
@@ -372,10 +568,28 @@ ALTER TABLE `kho`
   ADD PRIMARY KEY (`MaKho`);
 
 --
+-- Chỉ mục cho bảng `lophoc`
+--
+ALTER TABLE `lophoc`
+  ADD PRIMARY KEY (`MaLop`);
+
+--
 -- Chỉ mục cho bảng `monhoc`
 --
 ALTER TABLE `monhoc`
   ADD PRIMARY KEY (`MaMonHoc`);
+
+--
+-- Chỉ mục cho bảng `muonphonghoc`
+--
+ALTER TABLE `muonphonghoc`
+  ADD PRIMARY KEY (`MaMuonPhongHoc`);
+
+--
+-- Chỉ mục cho bảng `muonthietbi`
+--
+ALTER TABLE `muonthietbi`
+  ADD PRIMARY KEY (`MaMuonThietBi`);
 
 --
 -- Chỉ mục cho bảng `nhacungcap`
@@ -384,10 +598,22 @@ ALTER TABLE `nhacungcap`
   ADD PRIMARY KEY (`MaNhaCungCap`);
 
 --
+-- Chỉ mục cho bảng `phonghoc`
+--
+ALTER TABLE `phonghoc`
+  ADD PRIMARY KEY (`MaPhongHoc`);
+
+--
 -- Chỉ mục cho bảng `quanlythietbi`
 --
 ALTER TABLE `quanlythietbi`
   ADD PRIMARY KEY (`MaQuanLyThietBi`);
+
+--
+-- Chỉ mục cho bảng `suathietbi`
+--
+ALTER TABLE `suathietbi`
+  ADD PRIMARY KEY (`MaSuaThietBi`);
 
 --
 -- Chỉ mục cho bảng `taikhoan`
@@ -409,7 +635,19 @@ ALTER TABLE `thietbi`
 -- AUTO_INCREMENT cho bảng `chitiethoadon`
 --
 ALTER TABLE `chitiethoadon`
-  MODIFY `MaChiTietHoaDon` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
+  MODIFY `MaChiTietHoaDon` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
+
+--
+-- AUTO_INCREMENT cho bảng `chitietphieumuon`
+--
+ALTER TABLE `chitietphieumuon`
+  MODIFY `MaChiTietPhieuMuon` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT cho bảng `chitietphieutra`
+--
+ALTER TABLE `chitietphieutra`
+  MODIFY `MaPhieuTra` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT cho bảng `chungtu`
@@ -421,7 +659,7 @@ ALTER TABLE `chungtu`
 -- AUTO_INCREMENT cho bảng `dieuchuyen`
 --
 ALTER TABLE `dieuchuyen`
-  MODIFY `MaDieuChuyen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `MaDieuChuyen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT cho bảng `ghinhanthietbihong`
@@ -442,10 +680,28 @@ ALTER TABLE `kho`
   MODIFY `MaKho` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
+-- AUTO_INCREMENT cho bảng `lophoc`
+--
+ALTER TABLE `lophoc`
+  MODIFY `MaLop` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+
+--
 -- AUTO_INCREMENT cho bảng `monhoc`
 --
 ALTER TABLE `monhoc`
   MODIFY `MaMonHoc` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+
+--
+-- AUTO_INCREMENT cho bảng `muonphonghoc`
+--
+ALTER TABLE `muonphonghoc`
+  MODIFY `MaMuonPhongHoc` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT cho bảng `muonthietbi`
+--
+ALTER TABLE `muonthietbi`
+  MODIFY `MaMuonThietBi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT cho bảng `nhacungcap`
@@ -454,10 +710,22 @@ ALTER TABLE `nhacungcap`
   MODIFY `MaNhaCungCap` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
+-- AUTO_INCREMENT cho bảng `phonghoc`
+--
+ALTER TABLE `phonghoc`
+  MODIFY `MaPhongHoc` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT cho bảng `quanlythietbi`
 --
 ALTER TABLE `quanlythietbi`
   MODIFY `MaQuanLyThietBi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT cho bảng `suathietbi`
+--
+ALTER TABLE `suathietbi`
+  MODIFY `MaSuaThietBi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT cho bảng `thietbi`
