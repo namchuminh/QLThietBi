@@ -142,7 +142,15 @@ $route['muon-phong-hoc'] = "MuonPhongHoc/MuonPhongHoc";
 $route['muon-phong-hoc/muon'] = "MuonPhongHoc/MuonPhongHoc/Muon";
 $route['muon-phong-hoc/muon-phong'] = "MuonPhongHoc/MuonPhongHoc/MuonPhongHoc";
 $route['muon-phong-hoc/xoa/(:any)'] = "MuonPhongHoc/MuonPhongHoc/Xoa/$1";
+$route['muon-phong-hoc/tra/(:any)'] = "MuonPhongHoc/MuonPhongHoc/Tra/$1";
+$route['muon-phong-hoc/tra-phong/(:any)'] = "MuonPhongHoc/MuonPhongHoc/TraPhongHoc/$1";
 $route['muon-phong-hoc/liet-ke'] = "MuonPhongHoc/MuonPhongHoc/LietKe";
+$route['muon-phong-hoc/sua/(:any)'] = "MuonPhongHoc/MuonPhongHoc/SuaMuon/$1";
+$route['muon-phong-hoc/sua-thong-tin/(:any)'] = "MuonPhongHoc/MuonPhongHoc/SuaMuonPhongHoc/$1";
+
+
+
+// $route['muon-phong-hoc/xuat-theo-tuan'] = "MuonPhongHoc/Xuat_Excel/XuatTheoTuan";
 
 
 

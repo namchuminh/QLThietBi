@@ -8,7 +8,7 @@
     	<div class="row clearfix">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="card">
-                    <form action="<?php echo base_url("muon-phong-hoc/muon-phong"); ?>" method="POST">
+                    <form action="<?php echo base_url("muon-phong-hoc/sua-thong-tin/").$MuonPhongHoc[0]["MaMuonPhongHoc"]; ?>" method="POST">
                     <div class="body">
                         <div class="row clearfix">
                         <div class="header">
@@ -34,7 +34,7 @@
                                     <i class="material-icons">date_range</i>
                                 </span>
                                 <div class="form-line">
-                                    <input name="NgayMuon" type="date" class="form-control date">
+                                    <input value="<?php echo $MuonPhongHoc[0]["NgayMuon"] ?>" name="NgayMuon" type="date" class="form-control date">
                                 </div>
                             </div>
                         </div>
@@ -43,9 +43,13 @@
                             <label>Phòng học</label>
                             <select id="PhongHoc" name="MaPhongHoc" class="form-control show-tick" tabindex="-98">
                                 <option value="0" hidden>Chọn phòng học</option>
-                                <?php foreach ($PhongHoc as $key => $value) { ?>
+                                <?php foreach ($PhongHoc as $key => $value) {   
+                                    if ($MuonPhongHoc[0]["MaPhongHoc"]==$value["MaPhongHoc"]) {?>
+                                        <option value="<?php echo $value["MaPhongHoc"]; ?>" selected><?php echo $value["TenPhongHoc"]; ?></option>
+                                    <?php   }else{
+                                    ?>
                                         <option value="<?php echo $value["MaPhongHoc"]; ?>"><?php echo $value["TenPhongHoc"]; ?></option>
-                                <?php   } ?>
+                                <?php  } } ?>
                             </select>
                         </div>
                     
@@ -54,8 +58,16 @@
                                         <label>Buổi học</label>
                                         <select name="BuoiHoc" class="form-control show-tick" tabindex="-98">
                                             <option value="0" hidden>Chọn buổi học</option>
-                                            <option value="BuoiSang">Buổi Sáng</option>
-                                            <option value="BuoiChieu">Buổi Chiều</option>
+                                            
+                                            <?php if ($MuonPhongHoc[0]["BuoiHoc"]=="BuoiSang") { ?>
+                                                     <option value="BuoiSang" selected>Buổi Sáng</option>
+                                           <?php }else{ ?>
+                                           
+                                            <option value="BuoiChieu" selected>Buổi Chiều</option>
+
+                                        <?php } ?>
+                                            <option value="BuoiChieu" >Buổi Chiều</option>
+                                       
                                            
                                         </select>
                                     </div>
@@ -63,22 +75,31 @@
                                         <label>Tiết học</label>
                                         <select name="TietHoc" class="form-control show-tick" tabindex="-98">
                                             <option  value="0" hidden>Chọn tiết học</option>
-                                            <option value="1">Tiết 1</option>
-                                            <option value="2">Tiết 2</option>
-                                            <option value="3">Tiết 3</option>
-                                            <option value="4">Tiết 4</option>
-                                            <option value="5">Tiết 5</option>
-                                            
-                                            
+                                            <?php for ($i=0; $i <5 ; $i++) { 
+                                                if ($MuonPhongHoc[0]["TietHoc"]==($i+1)){?>
+                                                    <option value="<?php echo $i+1; ?>" selected>Tiết <?php echo $i+1; ?></option>
+                                                
+                                            <?php    }else{
+                                            ?>
+
+                                                <option value="<?php echo $i+1; ?>" selected>Tiết <?php echo $i+1; ?></option>
+                                            <?php }}  ?>
+                                           
+                                                                                       
                                         </select>
                                     </div>
                                     <div class="col-sm-12">
                                         <label>Lớp học</label>
                                         <select id="LopHoc" name="MaLop" class="form-control show-tick" tabindex="-98">
                                             <option value="0" hidden>Chọn lớp học</option>
-                                            <?php foreach ($LopHoc as $key => $value) { ?>
+                                            <?php foreach ($LopHoc as $key => $value) { 
+
+                                                if ($MuonPhongHoc[0]["MaLop"]==$value["MaLop"]) {?>
+                                                    <option value="<?php echo $value["MaLop"]; ?>" selected><?php echo $value["TenLop"]; ?></option>
+                                            <?php   }else{
+                                            ?>
                                                     <option value="<?php echo $value["MaLop"]; ?>"><?php echo $value["TenLop"]; ?></option>
-                                            <?php   } ?>
+                                            <?php  } } ?>
                                         </select>
                                     </div>
                                 </div>
@@ -89,9 +110,14 @@
                                         <label>Môn học</label>
                                         <select id="MonHoc" name="MaMon" class="form-control show-tick" tabindex="-98">
                                             <option value="0" hidden>Chọn môn học</option>
-                                            <?php foreach ($MonHoc as $key => $value) { ?>
+                                            <?php foreach ($MonHoc as $key => $value) { 
+                                              if ($MuonPhongHoc[0]["MaMon"]==$value["MaMonHoc"]) {?>
+                                                <option value="<?php echo $value["MaMonHoc"]; ?>" selected><?php echo $value["TenMonHoc"]; ?></option>
+                                            <?php   }else{
+                                            ?>
+
                                                     <option value="<?php echo $value["MaMonHoc"]; ?>"><?php echo $value["TenMonHoc"]; ?></option>
-                                            <?php   } ?>
+                                            <?php  } } ?>
                                         </select>
                                     </div>
                                 </div>
@@ -101,7 +127,7 @@
                                         <div class="form-group">
                                             <div class="form-line">
                                                 <label>Tên giáo viên</label>
-                                                <input type="text" name="NguoiMuon" rows="3" class="form-control no-resize" placeholder="Nhập Tên Giáo viên">
+                                                <input value="<?php echo $MuonPhongHoc[0]["NguoiMuon"] ?>" type="text" name="NguoiMuon" rows="3" class="form-control no-resize" placeholder="Nhập Tên Giáo viên">
                                             </div>
                                         </div>
                                     </div>
@@ -109,13 +135,13 @@
                                         <div class="form-group">
                                             <div class="form-line">
                                                 <label>Tên bài học</label>
-                                                <textarea name="TenBaiHoc" id="TenBaiHoc" rows="3" class="form-control no-resize" placeholder="Nhập Tên bài học"></textarea>
+                                                <textarea name="TenBaiHoc" id="TenBaiHoc" rows="3" class="form-control no-resize" placeholder="Nhập Tên bài học"><?php echo $MuonPhongHoc[0]["TenBaiHoc"] ?></textarea>
                                             </div>
                                         </div>
                                     </div>
 
                                      </div>
-                                        <button type="submit"  class="btn btn-primary waves-effect m-r-20" class="btn btn-link waves-effect">Mượn phòng học</button>
+                                        <button type="submit"  class="btn btn-primary waves-effect m-r-20" class="btn btn-link waves-effect">Cập nhật thông tin</button>
                                     </div>
                                 </div>
                                 

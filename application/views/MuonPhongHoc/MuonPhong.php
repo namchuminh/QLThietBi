@@ -16,7 +16,7 @@
                             <a class="btn btn-primary waves-effect" type="button" href="<?php echo base_url('muon-phong-hoc/muon'); ?>">Mượn Phòng Học</a>
                         </div>
                         
-                        <div class="col-sm-4">
+                        <div class="col-sm-6">
                             <b>Từ Ngày</b>
                             <div class="input-group">
                                 <span class="input-group-addon">
@@ -27,7 +27,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-sm-4">
+                        <div class="col-sm-6">
                             <b>Tới Ngày </b>
                             <div class="input-group">
                                 <span class="input-group-addon">
@@ -38,12 +38,22 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-sm-4">
+                        <div class="col-sm-6">
                             <label>Buổi học</label>
                             <select name="BuoiHoc" class="form-control show-tick" tabindex="-98">
                                 <option value="0" hidden>Chọn buổi học</option>
                                 <option value="BuoiSang">Buổi Sáng</option>
                                 <option value="BuoiChieu">Buổi Chiều</option>
+                               
+                            </select>
+                        </div>
+                        <div class="col-sm-6">
+                            <label>Tên Phòng</label>
+                            <select name="PhongHoc" class="form-control show-tick" tabindex="-98">
+                                <?php foreach ($PhongHoc as $key => $value) { ?>
+
+                                        <option value="<?php echo $value["MaPhongHoc"]; ?>"><?php echo $value["TenPhongHoc"]; ?></option>
+                                <?php   } ?>
                                
                             </select>
                         </div>
@@ -58,7 +68,7 @@
                         
                     </div>
                     
-                        <div class="body table-responsive">
+                        <!-- <div class="body table-responsive">
                             <table class="table">
                                 <thead>
                                     <tr>
@@ -95,13 +105,121 @@
                                                  
                                 </tbody>
                             </table>
+                        </div> -->
+                        <div class="table table-striped table-bordered">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Tiết</th>
+                                        <th>Thứ 2</th>
+                                        <th>Thứ 3</th>
+                                        <th>Thứ 4</th>
+                                        <th>Thứ 5</th>
+                                        <th>Thứ 6</th>
+                                        <th>Thứ 7</th>
+                                        
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                         <?php for ($i=0; $i < 5; $i++) { $dem=0;?>
+                                                <tr class="BuoiSang">
+                                                    <td><?php echo $i+1; ?></td>
+
+                                                    <?php for ($j=0; $j < 6; $j++){ ?>
+                                                        <?php foreach ($MuonPhongHoc as $key => $value){
+                                                            
+                                                        $ddate = $value["NgayMuon"];
+                                                        $duedt = explode("-", $ddate);
+                                                        $date  = mktime(0, 0, 0, $duedt[1], $duedt[2], $duedt[0]);
+                                                        $week  = date('w', $date);
+                                        
+                                                            if ($value["BuoiHoc"]=="BuoiSang" && $value["TietHoc"]==($i+1) && $week==($j+1)) {
+                                                            $dem++;                                                           
+                                                        ?>
+                                                            <td class="damuon" data-value="<?php echo $value["MaMuonPhongHoc"]; ?>" data-toggle="modal" data-target="#myModal"><?php echo $value["NguoiMuon"]; ?></td>
+                                                        <?php } } $dem++; if ($dem>6) {
+                                                            break;
+                                                        } ?>
+                                                            <td></td>
+                                                        <?php } ?>
+                                                        
+                                                </tr>
+                                            <?php } ?>
+                                           <?php for ($i=0; $i < 5; $i++) { $dem=0;?>
+                                                <tr class="BuoiSang">
+                                                    <td><?php echo $i+1; ?></td>
+
+                                                    <?php for ($j=0; $j < 6; $j++){ ?>
+                                                        <?php foreach ($MuonPhongHoc as $key => $value){
+                                                            
+                                                        $ddate = $value["NgayMuon"];
+                                                        $duedt = explode("-", $ddate);
+                                                        $date  = mktime(0, 0, 0, $duedt[1], $duedt[2], $duedt[0]);
+                                                        $week  = date('w', $date);
+                                        
+                                                            if ($value["BuoiHoc"]=="BuoiChieu" && $value["TietHoc"]==($i+1) && $week==($j+1)) {
+                                                            $dem++;                                                           
+                                                        ?>
+                                                            <td class="damuon" data-value="<?php echo $value["MaMuonPhongHoc"]; ?>" data-toggle="modal" data-target="#myModal"><?php echo $value["NguoiMuon"]."- Bài Dạy: ".$value["TenBaiHoc"]; ?></td>
+                                                        <?php } } $dem++; if ($dem>6) {
+                                                            break;
+                                                        } ?>
+                                                            <td></td>
+                                                        <?php } ?>
+                                                        
+                                                </tr>
+                                            <?php } ?> 
+                                        
+
+                                           <!-- <?php for ($i=0; $i < 5; $i++) { ?>
+                                                <tr class="BuoiSang">
+                                                    <td><?php echo $i+1 ?></td>
+                                                    <?php for ($j=0; $j < 6; $j++){ ?>
+                                                        <td></td>
+                                                    <?php } ?>
+                                                </tr>
+                                            <?php } ?>
+
+                                            <?php for ($i=0; $i < 5; $i++) { ?>
+                                                <tr class="BuoiChieu">
+                                                    <td><?php echo $i+1 ?></td>
+                                                    <?php for ($j=0; $j < 6; $j++){ ?>
+                                                        <td></td>
+                                                    <?php } ?>
+                                                </tr>
+                                            <?php } ?>   -->             
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                         <p style="color: red;" id="error"></p>
                         
                         <br>
 
+                    <!-- <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button> -->
+
+  <!-- Modal -->
+                  <div class="modal fade" id="myModal" role="dialog">
+                    <div class="modal-dialog">
                     
+                      <!-- Modal content-->
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <button type="button" class="close" data-dismiss="modal">&times;</button>
+                          <h4 class="modal-title">Chức năng</h4>
+                        </div>
+                        <div class="modal-body" style="text-align:center">
+                            <a class="link_xoa" href="<?php echo base_url("muon-phong-hoc/xoa/")?>"><i class="fa-solid fa-trash"></i> Hủy đăng ký mượn phòng</p></a><p>
+                            <a class="link_tra" href="<?php echo base_url("muon-phong-hoc/tra/")?>"><i class="fa-solid fa-backward"></i> Trả Phòng</p></a><p>
+                            <a class="link_sua" href="<?php echo base_url("muon-phong-hoc/sua/")?>"><i class="fa-regular fa-gear"></i> Sửa thông tin</p></a><p>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+                        </div>
+                      </div>
+                      
+                    </div>
+                  </div>                   
                     
 
                 </div>
@@ -146,8 +264,23 @@ $(document).ready(function(){
         
         
   });
-  
+});
+$(document).ready(function(){
+    $(".damuon").on('click', function (){
+        var value = $(this).data('value');
+       //alert(url);
+        
+        var url = $('.link_xoa').attr('href')+value;
+        $('.link_xoa').attr('href', url);
 
+        var url = $('.link_tra').attr('href')+value;
+        $('.link_tra').attr('href', url);
+
+        var url = $('.link_sua').attr('href')+value;
+        $('.link_sua').attr('href', url);
+        
+        
+  });
 });
 </script>
 <?php require(__DIR__.'/layouts/Footer.php'); ?>
