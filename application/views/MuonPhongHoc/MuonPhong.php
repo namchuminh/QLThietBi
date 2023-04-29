@@ -136,7 +136,7 @@
                                                             if ($value["BuoiHoc"]=="BuoiSang" && $value["TietHoc"]==($i+1) && $week==($j+1)) {
                                                             $dem++;                                                           
                                                         ?>
-                                                            <td class="damuon" data-value="<?php echo $value["MaMuonPhongHoc"]; ?>" data-toggle="modal" data-target="#myModal"><?php echo $value["NguoiMuon"]; ?></td>
+                                                            <td class="damuon" data-value="<?php echo $value["MaMuonPhongHoc"]; ?>" data-toggle="modal" data-target="#myModal"><?php echo $value["NguoiMuon"]."- Bài Dạy: ".$value["TenBaiHoc"];; ?></td>
                                                         <?php } } $dem++; if ($dem>6) {
                                                             break;
                                                         } ?>

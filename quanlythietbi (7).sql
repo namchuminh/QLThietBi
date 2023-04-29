@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th4 23, 2023 lúc 05:47 PM
+-- Thời gian đã tạo: Th4 29, 2023 lúc 01:07 PM
 -- Phiên bản máy phục vụ: 10.4.25-MariaDB
 -- Phiên bản PHP: 8.1.10
 
@@ -314,17 +314,18 @@ CREATE TABLE `muonphonghoc` (
   `MaLop` int(11) NOT NULL,
   `MaMon` int(11) NOT NULL,
   `TenBaiHoc` text COLLATE utf8_unicode_ci NOT NULL,
-  `NgayBatDauMuon` date NOT NULL,
-  `NgayKetThucMuon` date NOT NULL
+  `NgayMuon` date NOT NULL,
+  `NguoiMuon` varchar(100) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `muonphonghoc`
 --
 
-INSERT INTO `muonphonghoc` (`MaMuonPhongHoc`, `MaPhongHoc`, `BuoiHoc`, `TietHoc`, `MaLop`, `MaMon`, `TenBaiHoc`, `NgayBatDauMuon`, `NgayKetThucMuon`) VALUES
-(2, 2, 'BuoiSang', 3, 5, 3, 'aaa', '2023-04-26', '2023-04-29'),
-(3, 1, 'BuoiChieu', 3, 11, 6, 'aaa', '2023-04-23', '2023-04-24');
+INSERT INTO `muonphonghoc` (`MaMuonPhongHoc`, `MaPhongHoc`, `BuoiHoc`, `TietHoc`, `MaLop`, `MaMon`, `TenBaiHoc`, `NgayMuon`, `NguoiMuon`) VALUES
+(4, 1, 'BuoiChieu', 4, 14, 11, 'aaaa', '2023-05-04', 'Nguyen Van C'),
+(5, 2, 'BuoiSang', 3, 14, 12, 'a', '2023-04-26', 'Nguyen Van Thao'),
+(6, 1, 'BuoiChieu', 5, 4, 4, 'nnnn', '2023-04-29', 'Nguyen Van Thao');
 
 -- --------------------------------------------------------
 
@@ -515,6 +516,26 @@ INSERT INTO `thietbi` (`MaThietBi`, `TenThietBi`) VALUES
 (31, 'Máy chiếu overhead'),
 (32, 'Máy in');
 
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `traphonghoc`
+--
+
+CREATE TABLE `traphonghoc` (
+  `MaTraPhongHoc` int(11) NOT NULL,
+  `NgayTraPhong` date NOT NULL,
+  `MaMuonPhongHoc` int(11) NOT NULL,
+  `TinhTrang` text COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `traphonghoc`
+--
+
+INSERT INTO `traphonghoc` (`MaTraPhongHoc`, `NgayTraPhong`, `MaMuonPhongHoc`, `TinhTrang`) VALUES
+(1, '2023-04-29', 6, 'aaa');
+
 --
 -- Chỉ mục cho các bảng đã đổ
 --
@@ -628,6 +649,12 @@ ALTER TABLE `thietbi`
   ADD PRIMARY KEY (`MaThietBi`);
 
 --
+-- Chỉ mục cho bảng `traphonghoc`
+--
+ALTER TABLE `traphonghoc`
+  ADD PRIMARY KEY (`MaTraPhongHoc`);
+
+--
 -- AUTO_INCREMENT cho các bảng đã đổ
 --
 
@@ -695,7 +722,7 @@ ALTER TABLE `monhoc`
 -- AUTO_INCREMENT cho bảng `muonphonghoc`
 --
 ALTER TABLE `muonphonghoc`
-  MODIFY `MaMuonPhongHoc` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `MaMuonPhongHoc` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT cho bảng `muonthietbi`
@@ -732,6 +759,12 @@ ALTER TABLE `suathietbi`
 --
 ALTER TABLE `thietbi`
   MODIFY `MaThietBi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+
+--
+-- AUTO_INCREMENT cho bảng `traphonghoc`
+--
+ALTER TABLE `traphonghoc`
+  MODIFY `MaTraPhongHoc` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
