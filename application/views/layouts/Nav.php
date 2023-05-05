@@ -306,8 +306,7 @@
                         </ul>
                     </li>
                     <a href="javascript:void(0);" class="menu-toggle waves-effect waves-block" style="align-items: center;" >
-                            <i class="fa-solid fa-calendar"></i>
-                           <!--  <i class="material-icons">widgets</i> -->
+                            <i class="material-icons">map</i>
                             <span>Mượn Trả</span>
                     </a>
                     <ul class="ml-menu" style="display: none;">
