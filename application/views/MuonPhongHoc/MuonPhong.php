@@ -11,11 +11,10 @@
                     <form action="<?php echo base_url("muon-phong-hoc/liet-ke"); ?>" method="POST">
                     <div class="body">
                         <div class="row clearfix">
-                        <div class="header">
+                        <div class="header" style="padding: 0; padding-left: 15px; padding-bottom: 20px; margin-bottom: 15px;">
                             <button class="btn btn-warning waves-effect" type="submit">Liệt Kê</button>
                             <a class="btn btn-primary waves-effect" type="button" href="<?php echo base_url('muon-phong-hoc/muon'); ?>">Mượn Phòng Học</a>
                         </div>
-                        
                         <div class="col-sm-6">
                             <b>Từ Ngày</b>
                             <div class="input-group">
@@ -68,44 +67,7 @@
                         
                     </div>
                     
-                        <!-- <div class="body table-responsive">
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th>STT</th>
-                                        <th>Phòng mượn</th>
-                                        <th>Buổi học</th>
-                                        <th>Tiết học</th>
-                                        <th>Lớp học</th>
-                                        <th>Môn học</th>
-                                        <th>Tên bài học</th>
-                                        <th>Ngày bắt đầu mượn</th>
-                                        <th>Ngày bắt kết thúc mượn</th>
-                                        <th>Hủy mượn</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php foreach ($MuonPhongHoc as $key => $value) { ?>
-                                        <tr>
-                                            <td><?php echo $key+1; ?></td>
-                                            <td><?php echo $value['TenPhongHoc']; ?></td>
-                                            <td><?php echo $value['BuoiHoc']; ?></td>
-                                            <td><?php echo $value['TietHoc']; ?></td>
-                                            <td><?php echo $value['TenLop']; ?></td>
-                                            <td><?php echo $value['TenMonHoc']; ?></td>
-                                            <td><?php echo $value['TenBaiHoc']; ?></td>
-                                            <td><?php echo $value['NgayBatDauMuon']; ?></td>
-                                            
-                                            <td><?php echo $value["NgayKetThucMuon"]; ?></td>
-                                            <td><a href="<?php echo base_url('muon-phong-hoc/xoa/').$value["MaMuonPhongHoc"]; ?>"><i class="fa-solid fa-trash"></i></a> </td>
-                                            
-                                        </tr>
-                                    <?php } ?>
-                                        
-                                                 
-                                </tbody>
-                            </table>
-                        </div> -->
+                        
                         <div class="table table-striped table-bordered">
                             <table class="table">
                                 <thead>
@@ -169,25 +131,7 @@
                                                         
                                                 </tr>
                                             <?php } ?> 
-                                        
 
-                                           <!-- <?php for ($i=0; $i < 5; $i++) { ?>
-                                                <tr class="BuoiSang">
-                                                    <td><?php echo $i+1 ?></td>
-                                                    <?php for ($j=0; $j < 6; $j++){ ?>
-                                                        <td></td>
-                                                    <?php } ?>
-                                                </tr>
-                                            <?php } ?>
-
-                                            <?php for ($i=0; $i < 5; $i++) { ?>
-                                                <tr class="BuoiChieu">
-                                                    <td><?php echo $i+1 ?></td>
-                                                    <?php for ($j=0; $j < 6; $j++){ ?>
-                                                        <td></td>
-                                                    <?php } ?>
-                                                </tr>
-                                            <?php } ?>   -->             
                                 </tbody>
                             </table>
                         </div>
@@ -208,7 +152,7 @@
                           <button type="button" class="close" data-dismiss="modal">&times;</button>
                           <h4 class="modal-title">Chức năng</h4>
                         </div>
-                        <div class="modal-body" style="text-align:center">
+                        <div class="modal-body" style="text-align:center; display: flex; justify-content: space-between;">
                             <a class="link_xoa" href="<?php echo base_url("muon-phong-hoc/xoa/")?>"><i class="fa-solid fa-trash"></i> Hủy đăng ký mượn phòng</p></a><p>
                             <a class="link_tra" href="<?php echo base_url("muon-phong-hoc/tra/")?>"><i class="fa-solid fa-backward"></i> Trả Phòng</p></a><p>
                             <a class="link_sua" href="<?php echo base_url("muon-phong-hoc/sua/")?>"><i class="fa-regular fa-gear"></i> Sửa thông tin</p></a><p>
@@ -217,70 +161,67 @@
                           <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
                         </div>
                       </div>
-                      
                     </div>
                   </div>                   
-                    
-
                 </div>
             </div>
         </div>
 
     </div>
-    </form>
+</form>
    
              
 </section>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 <script>
-$(document).ready(function(){
-  $("#MaKho").on('change', function (){
-        var MonHoc = $('#MonHoc').val();
-        var MaKho = $('#MaKho').val();
-        $.post("<?php echo base_url("muon-tra/muon-thiet-bi/thiet-bi/")?>"+MaKho, function(data){
-            $("#MaThietBi").html(data);
-            $("#MaThietBi").html($("#MaThietBi").html());
-        });
+    $(document).ready(function(){
+      $("#MaKho").on('change', function (){
+            var MonHoc = $('#MonHoc').val();
+            var MaKho = $('#MaKho').val();
+            $.post("<?php echo base_url("muon-tra/muon-thiet-bi/thiet-bi/")?>"+MaKho, function(data){
+                $("#MaThietBi").html(data);
+                $("#MaThietBi").html($("#MaThietBi").html());
+            });
 
-  });
-});
-$(document).ready(function(){
-  $("#MonHoc").on('change', function (){
-        var ThietBi = $("#MaThietBi option:selected" ).text();
-        $("#TenThietBi").val(ThietBi); 
-  });
-});
-$(document).ready(function(){
-  $("#MaThietBi").on('change', function (){
-        var ThietBi = $("#MaThietBi option:selected" ).text();
-        $("#TenThietBi").val(ThietBi);
-  });
-});
-$(document).ready(function(){
-  $(".btn_clik").on('click', function (){
-        var currentRow=$(this).closest("tr"); 
-       
-        var col1=currentRow.find(".Tiet").val(); // get current row 1st table cell TD value
-        
-        
-  });
-});
-$(document).ready(function(){
-    $(".damuon").on('click', function (){
-        var value = $(this).data('value');
-       //alert(url);
-        
-        var url = $('.link_xoa').attr('href')+value;
-        $('.link_xoa').attr('href', url);
+      });
+    });
+    $(document).ready(function(){
+      $("#MonHoc").on('change', function (){
+            var ThietBi = $("#MaThietBi option:selected" ).text();
+            $("#TenThietBi").val(ThietBi); 
+      });
+    });
+    $(document).ready(function(){
+      $("#MaThietBi").on('change', function (){
+            var ThietBi = $("#MaThietBi option:selected" ).text();
+            $("#TenThietBi").val(ThietBi);
+      });
+    });
+    $(document).ready(function(){
+      $(".btn_clik").on('click', function (){
+            var currentRow=$(this).closest("tr"); 
+           
+            var col1=currentRow.find(".Tiet").val(); // get current row 1st table cell TD value
+            
+            
+      });
+    });
+    $(document).ready(function(){
+        $(".damuon").on('click', function (){
+            var value = $(this).data('value');
+            
+            if(value != ""){
+                var url = $('.link_xoa').attr('href')+value;
+                $('.link_xoa').attr('href', url);
 
-        var url = $('.link_tra').attr('href')+value;
-        $('.link_tra').attr('href', url);
+                var url = $('.link_tra').attr('href')+value;
+                $('.link_tra').attr('href', url);
 
-        var url = $('.link_sua').attr('href')+value;
-        $('.link_sua').attr('href', url);
-        
-        
-  });
-});
+                var url = $('.link_sua').attr('href')+value;
+                $('.link_sua').attr('href', url);
+            }
+            
+      });
+    });
 </script>
 <?php require(__DIR__.'/layouts/Footer.php'); ?>
