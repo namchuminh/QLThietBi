@@ -61,12 +61,14 @@
                                             
                                             <?php if ($MuonPhongHoc[0]["BuoiHoc"]=="BuoiSang") { ?>
                                                      <option value="BuoiSang" selected>Buổi Sáng</option>
+                                                     <option value="BuoiChieu" >Buổi Chiều</option>
                                            <?php }else{ ?>
                                            
                                             <option value="BuoiChieu" selected>Buổi Chiều</option>
+                                            <option value="BuoiSang">Buổi Sáng</option>
 
                                         <?php } ?>
-                                            <option value="BuoiChieu" >Buổi Chiều</option>
+                                            
                                        
                                            
                                         </select>
