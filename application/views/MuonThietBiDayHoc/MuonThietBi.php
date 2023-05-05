@@ -10,45 +10,7 @@
                 <div class="card">
                     <form action="<?php echo base_url("muon-tra/muon-thiet-bi/them"); ?>" method="POST">
                     <div class="body">
-                        <!-- <div class="row clearfix">
-                        <div class="header">
-                        <h2>
-                            Các tiết sử dụng thiết bị dạy học
-                        </h2>
-                    </div>
-                        <div class="body table-responsive">
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th>Mã lớp</th>
-                                        <th>Mã môn</th>
-                                        <th>Tiết</th>
-                                        <th>Lớp</th>
-                                        <th>Tên bài học</th>
-                                        <th>Môn</th>
-                                        <th>Xóa</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                               
-                                    <tr>
-                                        <td>Mã lớp</td>
-                                        <td>Mã môn</td>
-                                        <td>Tiết</td>
-                                        <td>Lớp</td>
-                                        <td>Tên bài dọc</td>
-                                        <td>Môn</td>
-                                        <td>Check</td>
-                                    </tr>    
-                                                 
-                                </tbody>
-                            </table>
-                        </div>
-                    </div> -->
-                        <!-- <p style="color: red;" id="error"></p>
-                        <button type="button" class="btn btn-primary waves-effect m-r-20" data-toggle="modal" data-target="#largeModal" id="btn_dieuchuyen" style="margin-top: -20px; float: right;">Thêm chi tiết</button>
-                        <br> -->
-
+                        
                     <?php if(isset($error)){ ?>
                         <p style="color: red;"><?php echo $error; ?></p>
                     <?php } ?>
@@ -130,6 +92,7 @@
                         
                     </div>
                         <button type="submit"  class="btn btn-primary waves-effect m-r-20" class="btn btn-link waves-effect">Mượn thiết bị</button>
+                        <a class="btn btn-primary waves-effect" type="button" href="<?php echo base_url('muon-tra'); ?>">Quay Lại</a>
 	                </div>
 
                 </div>

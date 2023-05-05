@@ -107,6 +107,9 @@
                                                         
                                                 </tr>
                                             <?php } ?>
+                                            <tr>
+                                                <td style="border: none;"><b>Lịch buổi chiều</b></td>
+                                            </tr>
                                            <?php for ($i=0; $i < 5; $i++) { $dem=0;?>
                                                 <tr class="BuoiSang">
                                                     <td><?php echo $i+1; ?></td>

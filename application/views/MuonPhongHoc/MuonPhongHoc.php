@@ -3,7 +3,7 @@
 <section class="content">
     <div class="container-fluid">
         <div class="block-header">
-            <h2>Mượn phòng chức năng</h2>
+            <h2>MƯỢN PHÒNG CHỨC NĂNG<NG></NG></h2>
         </div>
     	<div class="row clearfix">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -11,13 +11,14 @@
                     <form action="<?php echo base_url("muon-phong-hoc/muon-phong"); ?>" method="POST">
                     <div class="body">
                         <div class="row clearfix">
-                        <div class="header">
-                        <?php if(isset($error)){ ?>
-                        <p style="color: red;"><?php echo $error; ?></p>
-                    <?php } ?>
-                    <?php if(isset($alert)){ ?>
-                        <p style="color: green;"><?php echo $alert; ?></p>
-                    <?php } ?>
+                        <div class="header" style="padding: 0; padding-left: 15px; padding-bottom: 20px; margin-bottom: 15px;">
+                            <a class="btn btn-primary waves-effect" type="button" href="<?php echo base_url('muon-phong-hoc'); ?>">Quay Lại</a>
+                            <?php if(isset($error)){ ?>
+                                <p style="color: red;"><?php echo $error; ?></p>
+                            <?php } ?>
+                            <?php if(isset($alert)){ ?>
+                                <p style="color: green;"><?php echo $alert; ?></p>
+                            <?php } ?>
                     </div>
                         
                     </div>

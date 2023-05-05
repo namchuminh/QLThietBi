@@ -149,6 +149,7 @@
                         
                     </div>
                         <button type="submit"  class="btn btn-primary waves-effect m-r-20" class="btn btn-link waves-effect">Cập nhật</button>
+                        <a class="btn btn-primary waves-effect" type="button" href="<?php echo base_url('sua-chua-thiet-bi'); ?>">Quay Lại</a>
 	                </div>
 
                 </div>
