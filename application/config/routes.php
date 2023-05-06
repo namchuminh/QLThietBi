@@ -152,6 +152,16 @@ $route['muon-phong-hoc/sua-thong-tin/(:any)'] = "MuonPhongHoc/MuonPhongHoc/SuaMu
 
 // $route['muon-phong-hoc/xuat-theo-tuan'] = "MuonPhongHoc/Xuat_Excel/XuatTheoTuan";
 
+//thanh ly thiet bi
+$route['thanh-ly-thiet-bi'] = "ThanhLyThietBi/ThanhLyThietBi";
+$route['thanh-ly-thiet-bi/them'] = "ThanhLyThietBi/ThanhLyThietBi/ThanhLy";
+$route['thanh-ly-thiet-bi/them-thanh-ly'] = "ThanhLyThietBi/ThanhLyThietBi/ThemThanhLy";
+$route['thanh-ly-thiet-bi/liet-ke'] = "ThanhLyThietBi/ThanhLyThietBi/LietKe";
+$route['thanh-ly-thiet-bi/khoi-phuc/(:any)'] = "ThanhLyThietBi/ThanhLyThietBi/KhoiPhuc/$1";
+$route['thanh-ly-thiet-bi/xuat-excel'] = "ThanhLyThietBi/Xuat_Excel/index";
+
+
+
 
 
 

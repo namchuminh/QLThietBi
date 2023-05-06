@@ -303,6 +303,11 @@
                                     <span>Sửa chữa thiết bị</span>
                                 </a>
                             </li>
+                            <li>
+                                <a href="<?php echo base_url('thanh-ly-thiet-bi'); ?>" class="waves-effect waves-block">
+                                    <span>Thanh lý thiết bị</span>
+                                </a>
+                            </li>
                         </ul>
                     </li>
                     <a href="javascript:void(0);" class="menu-toggle waves-effect waves-block" style="align-items: center;" >
