@@ -153,6 +153,13 @@ class MuonPhongHoc extends CI_Controller {
 				"PhongHoc"=>$PhongHoc,
 			);
 			return $this->load->view('MuonPhongHoc/MuonPhong', $data);
+		}elseif(!empty($NgayMuon) && !empty($NgayKetThucMuon ) && !empty($BuoiHoc ) && $MaPhongHoc!=0){
+			$MuonPhong = $this->Model_MuonPhongHoc->GetMuonPhongByALL($NgayMuon, $NgayKetThucMuon , $MaPhongHoc, $BuoiHoc);
+			$data = array(
+				"MuonPhongHoc"=>$MuonPhong,
+				"PhongHoc"=>$PhongHoc,
+			);
+			return $this->load->view('MuonPhongHoc/MuonPhong', $data);
 		}else{
 			$MuonPhong = $this->Model_MuonPhongHoc->GetMuonPhong();
 			$data = array(
