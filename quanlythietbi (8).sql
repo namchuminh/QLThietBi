@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th4 29, 2023 lúc 01:07 PM
+-- Thời gian đã tạo: Th5 07, 2023 lúc 12:40 PM
 -- Phiên bản máy phục vụ: 10.4.25-MariaDB
 -- Phiên bản PHP: 8.1.10
 
@@ -324,8 +324,11 @@ CREATE TABLE `muonphonghoc` (
 
 INSERT INTO `muonphonghoc` (`MaMuonPhongHoc`, `MaPhongHoc`, `BuoiHoc`, `TietHoc`, `MaLop`, `MaMon`, `TenBaiHoc`, `NgayMuon`, `NguoiMuon`) VALUES
 (4, 1, 'BuoiChieu', 4, 14, 11, 'aaaa', '2023-05-04', 'Nguyen Van C'),
-(5, 2, 'BuoiSang', 3, 14, 12, 'a', '2023-04-26', 'Nguyen Van Thao'),
-(6, 1, 'BuoiChieu', 5, 4, 4, 'nnnn', '2023-04-29', 'Nguyen Van Thao');
+(5, 2, 'BuoiSang', 3, 14, 12, 'bbbaa', '2023-04-26', 'Nguyen Van Thao'),
+(6, 1, 'BuoiChieu', 5, 4, 4, 'nnnn', '2023-04-29', 'Nguyen Van Thao'),
+(7, 2, 'BuoiSang', 3, 15, 11, 'a', '2023-05-05', 'Nguyen Van Thao'),
+(8, 1, 'BuoiChieu', 3, 14, 3, 'mmmm', '2023-05-04', 'Nguyen Van Thao a'),
+(9, 1, 'BuoiSang', 1, 7, 4, 'mmm', '2023-05-05', 'Nguyen Van Thao a nn');
 
 -- --------------------------------------------------------
 
@@ -466,6 +469,35 @@ CREATE TABLE `taikhoan` (
 
 INSERT INTO `taikhoan` (`TaiKhoan`, `MatKhau`, `HoTen`, `SoDienThoai`, `NamSinh`, `ChucVu`, `QueQuan`, `AnhDaiDien`) VALUES
 ('admin', '0192023a7bbd73250516f069df18b500', 'nguyen van a', '03836999', '2023-03-02', 'admin', 'ha noi', 'aa');
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `thanhlythietbi`
+--
+
+CREATE TABLE `thanhlythietbi` (
+  `MaThanhLyThietBi` int(11) NOT NULL,
+  `MaThietBi` int(11) NOT NULL,
+  `MaKho` int(11) NOT NULL,
+  `SoLuongThanhLy` int(11) NOT NULL,
+  `NgayGhiNhan` date NOT NULL,
+  `NguoiPhatHien` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `SoBienBan` int(11) NOT NULL,
+  `DonGiaThanhLy` int(11) NOT NULL,
+  `LyDoThanhLy` text COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `thanhlythietbi`
+--
+
+INSERT INTO `thanhlythietbi` (`MaThanhLyThietBi`, `MaThietBi`, `MaKho`, `SoLuongThanhLy`, `NgayGhiNhan`, `NguoiPhatHien`, `SoBienBan`, `DonGiaThanhLy`, `LyDoThanhLy`) VALUES
+(1, 8, 4, 12, '2023-05-06', 'nguyen van C', 2, 24000, 'aaaa'),
+(3, 8, 4, 4, '2023-05-06', 'nguyen van C', 2, 8000, 'a'),
+(4, 8, 4, 2, '2023-05-14', 'Giang A B', 2, 4000, 'aaa'),
+(6, 8, 4, 7, '2023-05-20', 'Giang A c', 2, 14000, 'lalsl'),
+(7, 8, 4, 10, '2023-05-06', 'a', 2, 20000, 'ádafa');
 
 -- --------------------------------------------------------
 
@@ -643,6 +675,12 @@ ALTER TABLE `taikhoan`
   ADD PRIMARY KEY (`TaiKhoan`);
 
 --
+-- Chỉ mục cho bảng `thanhlythietbi`
+--
+ALTER TABLE `thanhlythietbi`
+  ADD PRIMARY KEY (`MaThanhLyThietBi`);
+
+--
 -- Chỉ mục cho bảng `thietbi`
 --
 ALTER TABLE `thietbi`
@@ -722,7 +760,7 @@ ALTER TABLE `monhoc`
 -- AUTO_INCREMENT cho bảng `muonphonghoc`
 --
 ALTER TABLE `muonphonghoc`
-  MODIFY `MaMuonPhongHoc` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `MaMuonPhongHoc` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT cho bảng `muonthietbi`
@@ -753,6 +791,12 @@ ALTER TABLE `quanlythietbi`
 --
 ALTER TABLE `suathietbi`
   MODIFY `MaSuaThietBi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT cho bảng `thanhlythietbi`
+--
+ALTER TABLE `thanhlythietbi`
+  MODIFY `MaThanhLyThietBi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT cho bảng `thietbi`
