@@ -157,7 +157,7 @@ class MuonPhongHoc extends CI_Controller {
 		}else{
 			$MuonPhong = $this->Model_MuonPhongHoc->GetMuonPhong();
 			$data = array(
-				'error'=>"vui lòng nhập thông tin",
+				'error'=>"vui lòng nhập thông tin 2",
 				"MuonPhongHoc"=>$MuonPhong,
 				"PhongHoc"=>$PhongHoc,
 			);

@@ -10,7 +10,7 @@
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="card">
                     <div class="header">
-                        <h2><a href="<?php echo base_url("tang-thiet-bi/") ?>">Danh sách »</a> Chi tiết hóa đơn</h2>
+                        <a class="btn btn-primary waves-effect" href="<?php echo base_url("tang-thiet-bi/") ?>">Quay Lại</a>
                     </div>
                     <div class="body">
                         <div class="row clearfix">
