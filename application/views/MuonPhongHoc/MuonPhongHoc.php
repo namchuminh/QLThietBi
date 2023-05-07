@@ -164,7 +164,6 @@ $(document).ready(function(){
        
         var col1=currentRow.find(".Tiet").val(); // get current row 1st table cell TD value
         
-        
   });
   
 

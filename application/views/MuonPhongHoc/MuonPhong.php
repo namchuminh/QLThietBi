@@ -40,6 +40,7 @@
                         <div class="col-sm-6">
                             <label>Buổi học</label>
                             <select name="BuoiHoc" class="form-control show-tick" tabindex="-98">
+                                <option value="0" hidden="">chọn buổi học</option>
                                 <option value="BuoiSang">Buổi Sáng</option>
                                 <option value="BuoiChieu">Buổi Chiều</option>
                                
@@ -160,7 +161,7 @@
                             <a class="link_sua" href="<?php echo base_url("muon-phong-hoc/sua/")?>"><i class="fa-regular fa-gear"></i> Sửa thông tin</p></a><p>
                         </div>
                         <div class="modal-footer">
-                          <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+                          <button type="button" class="btn btn-default" data-dismiss="modal" id="btn_close">Đóng</button>
                         </div>
                       </div>
                     </div>
@@ -224,6 +225,31 @@
             }
             
       });
+    });
+    $(document).ready(function(){
+      //   $("#btn_close").on('click', function (){
+            
+      //       $('.link_xoa').attr('href', <?php echo base_url("muon-phong-hoc/xoa/")?>);
+      //       $('.link_tra').attr('href', <?php echo base_url("muon-phong-hoc/tra/")?>);
+      //       $('.link_sua').attr('href', <?php echo base_url("muon-phong-hoc/sua/")?>);
+      //   $(".damuon").on('click', function (){
+      //       var value = $(this).data('value');
+            
+      //       if(value != ""){
+      //           var url = $('.link_xoa').attr('href')+value;
+      //           $('.link_xoa').attr('href', url);
+
+      //           var url = $('.link_tra').attr('href')+value;
+      //           $('.link_tra').attr('href', url);
+
+      //           var url = $('.link_sua').attr('href')+value;
+      //           $('.link_sua').attr('href', url);
+      //       }
+            
+      // });
+            
+      // });
+
     });
 </script>
 <?php require(__DIR__.'/layouts/Footer.php'); ?>

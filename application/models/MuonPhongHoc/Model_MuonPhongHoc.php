@@ -39,43 +39,57 @@ class Model_MuonPhongHoc extends CI_Model {
 	}
 	public function GetMuonPhong()
 	{
-		$sql = "SELECT muonphonghoc.*, phonghoc.*, lophoc.*, monhoc.* FROM muonphonghoc, phonghoc, lophoc, monhoc WHERE muonphonghoc.MaPhongHoc = phonghoc.MaPhongHoc AND muonphonghoc.MaLop = lophoc.MaLop AND muonphonghoc.MaMon = monhoc.MaMonHoc AND phonghoc.MaPhongHoc = 1 AND muonphonghoc.NgayMuon >= DATE_SUB(CURDATE(), INTERVAL DAYOFWEEK(CURDATE())-1 DAY) AND muonphonghoc.NgayMuon  < DATE_ADD(CURDATE(), INTERVAL 1 DAY);";
+		$sql = "SELECT muonphonghoc.*, phonghoc.*, lophoc.*, monhoc.* FROM muonphonghoc, phonghoc, lophoc, monhoc WHERE muonphonghoc.MaPhongHoc = phonghoc.MaPhongHoc AND muonphonghoc.MaLop = lophoc.MaLop AND muonphonghoc.MaMon = monhoc.MaMonHoc AND phonghoc.MaPhongHoc = 1 AND YEARWEEK(muonphonghoc.NgayMuon, 1) = YEARWEEK(CURDATE(), 1)";
 		$result = $this->db->query($sql);
 		return $result->result_array();
 		
 	}
 	public function GetMuonPhongByDate1($NgayBatDauMuon, $MaPhongHoc)
 	{
-		$sql = "SELECT muonphonghoc.*, phonghoc.*, lophoc.*, monhoc.* FROM muonphonghoc, phonghoc, lophoc, monhoc WHERE muonphonghoc.MaPhongHoc = phonghoc.MaPhongHoc AND muonphonghoc.MaLop = lophoc.MaLop AND muonphonghoc.MaMon = monhoc.MaMonHoc AND muonphonghoc.NgayMuon = ? AND muonphonghoc.MaPhongHoc=?";
-		$result = $this->db->query($sql, array($NgayBatDauMuon,  $MaPhongHoc));
+		$sql = "SELECT muonphonghoc.*, phonghoc.*, lophoc.*, monhoc.* FROM muonphonghoc, phonghoc, lophoc, monhoc WHERE muonphonghoc.MaPhongHoc = phonghoc.MaPhongHoc AND muonphonghoc.MaLop = lophoc.MaLop AND muonphonghoc.MaMon = monhoc.MaMonHoc AND muonphonghoc.NgayMuon = ? AND muonphonghoc.MaPhongHoc =? AND YEARWEEK(muonphonghoc.NgayMuon, 1) = YEARWEEK( ? , 1)";
+		$result = $this->db->query($sql, array($NgayBatDauMuon,  $MaPhongHoc, $NgayBatDauMuon));
 		return $result->result_array();
 		
 	}
 	public function GetMuonPhongByDate2($NgayBatDauMuon, $NgayKetThucMuon , $MaPhongHoc)
 	{
-		$sql = "SELECT muonphonghoc.*, phonghoc.*, lophoc.*, monhoc.* FROM muonphonghoc, phonghoc, lophoc, monhoc WHERE muonphonghoc.MaPhongHoc = phonghoc.MaPhongHoc AND muonphonghoc.MaLop = lophoc.MaLop AND muonphonghoc.MaMon = monhoc.MaMonHoc AND muonphonghoc.NgayMuon <= ? AND muonphonghoc.NgayMuon >= ? AND muonphonghoc.MaPhongHoc=?";
-		$result = $this->db->query($sql, array($NgayBatDauMuon, $NgayKetThucMuon, $MaPhongHoc));
+		$sql = "SELECT muonphonghoc.*, phonghoc.*, lophoc.*, monhoc.* FROM muonphonghoc, phonghoc, lophoc, monhoc WHERE muonphonghoc.MaPhongHoc = phonghoc.MaPhongHoc AND muonphonghoc.MaLop = lophoc.MaLop AND muonphonghoc.MaMon = monhoc.MaMonHoc AND muonphonghoc.NgayMuon <= ? AND muonphonghoc.NgayMuon >= ? AND muonphonghoc.MaPhongHoc=? AND YEARWEEK(muonphonghoc.NgayMuon, 1) = YEARWEEK(?, 1)";
+		$result = $this->db->query($sql, array($NgayBatDauMuon, $NgayKetThucMuon, $MaPhongHoc, $NgayBatDauMuon));
 		return $result->result_array();
 		
 	}
 	public function GetMuonPhongByBuoiHoc($BuoiHoc)
 	{
-		$sql = "SELECT muonphonghoc.*, phonghoc.*, lophoc.*, monhoc.* FROM muonphonghoc, phonghoc, lophoc, monhoc WHERE muonphonghoc.MaPhongHoc = phonghoc.MaPhongHoc AND muonphonghoc.MaLop = lophoc.MaLop AND muonphonghoc.MaMon = monhoc.MaMonHoc AND muonphonghoc.BuoiHoc = ?";
+		$sql = "SELECT muonphonghoc.*, phonghoc.*, lophoc.*, monhoc.* FROM muonphonghoc, phonghoc, lophoc, monhoc WHERE muonphonghoc.MaPhongHoc = phonghoc.MaPhongHoc AND muonphonghoc.MaLop = lophoc.MaLop AND muonphonghoc.MaMon = monhoc.MaMonHoc AND muonphonghoc.BuoiHoc = ?  AND YEARWEEK(muonphonghoc.NgayMuon, 1) = YEARWEEK(CURDATE(), 1)";
 		$result = $this->db->query($sql, array($BuoiHoc));
 		return $result->result_array();
 		
 	}
 	public function GetMuonPhongByMa($MaMuonPhongHoc)
 	{
-		$sql = "SELECT muonphonghoc.*, phonghoc.*, lophoc.*, monhoc.* FROM muonphonghoc, phonghoc, lophoc, monhoc WHERE muonphonghoc.MaPhongHoc = phonghoc.MaPhongHoc AND muonphonghoc.MaLop = lophoc.MaLop AND muonphonghoc.MaMon = monhoc.MaMonHoc AND muonphonghoc.MaMuonPhongHoc = ?";
+		$sql = "SELECT muonphonghoc.*, phonghoc.*, lophoc.*, monhoc.* FROM muonphonghoc, phonghoc, lophoc, monhoc WHERE muonphonghoc.MaPhongHoc = phonghoc.MaPhongHoc AND muonphonghoc.MaLop = lophoc.MaLop AND muonphonghoc.MaMon = monhoc.MaMonHoc AND muonphonghoc.MaMuonPhongHoc = ? AND YEARWEEK(muonphonghoc.NgayMuon, 1) = YEARWEEK(CURDATE(), 1)";
 		$result = $this->db->query($sql, array($MaMuonPhongHoc));
 		return $result->result_array();
 		
 	}
 	public function GetMuonPhongByPhong($MaPhongHoc)
 	{
-		$sql = "SELECT muonphonghoc.*, phonghoc.*, lophoc.*, monhoc.* FROM muonphonghoc, phonghoc, lophoc, monhoc WHERE muonphonghoc.MaPhongHoc = phonghoc.MaPhongHoc AND muonphonghoc.MaLop = lophoc.MaLop AND muonphonghoc.MaMon = monhoc.MaMonHoc AND muonphonghoc.NgayMuon >= DATE_SUB(CURDATE(), INTERVAL DAYOFWEEK(CURDATE())-1 DAY) AND muonphonghoc.NgayMuon  < DATE_ADD(CURDATE(), INTERVAL 1 DAY) AND muonphonghoc.MaPhongHoc = ?";
+		$sql = "SELECT muonphonghoc.*, phonghoc.*, lophoc.*, monhoc.* FROM muonphonghoc, phonghoc, lophoc, monhoc WHERE muonphonghoc.MaPhongHoc = phonghoc.MaPhongHoc AND muonphonghoc.MaLop = lophoc.MaLop AND muonphonghoc.MaMon = monhoc.MaMonHoc AND YEARWEEK(muonphonghoc.NgayMuon, 1) = YEARWEEK(CURDATE(), 1) AND muonphonghoc.MaPhongHoc = ? AND YEARWEEK(muonphonghoc.NgayMuon, 1) = YEARWEEK(CURDATE(), 1)";
 		$result = $this->db->query($sql, array($MaPhongHoc));
+		return $result->result_array();
+		
+	}
+	public function GetMuonPhongByALL($NgayBatDauMuon, $NgayKetThucMuon , $MaPhongHoc, $BuoiHoc)
+	{
+		$sql = "SELECT muonphonghoc.*, phonghoc.*, lophoc.*, monhoc.* FROM muonphonghoc, phonghoc, lophoc, monhoc WHERE muonphonghoc.MaPhongHoc = phonghoc.MaPhongHoc AND muonphonghoc.MaLop = lophoc.MaLop AND muonphonghoc.MaMon = monhoc.MaMonHoc AND  muonphonghoc.NgayMuon >= ? AND  muonphonghoc.NgayMuon <= ? AND  muonphonghoc.MaPhongHoc = ?  AND muonphonghoc.BuoiHoc = ? AND YEARWEEK(muonphonghoc.NgayMuon, 1) = YEARWEEK(?, 1)";
+		$result = $this->db->query($sql, array($NgayBatDauMuon, $NgayKetThucMuon , $MaPhongHoc, $BuoiHoc, $NgayBatDauMuon));
+		return $result->result_array();
+		
+	}
+	public function GetMuonPhongByALL2($NgayBatDauMuon, $MaPhongHoc, $BuoiHoc)
+	{
+		$sql = "SELECT muonphonghoc.*, phonghoc.*, lophoc.*, monhoc.* FROM muonphonghoc, phonghoc, lophoc, monhoc WHERE muonphonghoc.MaPhongHoc = phonghoc.MaPhongHoc AND muonphonghoc.MaLop = lophoc.MaLop AND muonphonghoc.MaMon = monhoc.MaMonHoc AND  muonphonghoc.NgayMuon = ? AND muonphonghoc.MaPhongHoc = ?  AND muonphonghoc.BuoiHoc = ? AND YEARWEEK(muonphonghoc.NgayMuon, 1) = YEARWEEK(?, 1)";
+		$result = $this->db->query($sql, array($NgayBatDauMuon, $MaPhongHoc, $BuoiHoc, $NgayBatDauMuon));
 		return $result->result_array();
 		
 	}
