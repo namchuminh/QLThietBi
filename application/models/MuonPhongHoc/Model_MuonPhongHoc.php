@@ -86,6 +86,13 @@ class Model_MuonPhongHoc extends CI_Model {
 		return $result->result_array();
 		
 	}
+	public function GetMuonPhongByALL2($NgayBatDauMuon, $MaPhongHoc, $BuoiHoc)
+	{
+		$sql = "SELECT muonphonghoc.*, phonghoc.*, lophoc.*, monhoc.* FROM muonphonghoc, phonghoc, lophoc, monhoc WHERE muonphonghoc.MaPhongHoc = phonghoc.MaPhongHoc AND muonphonghoc.MaLop = lophoc.MaLop AND muonphonghoc.MaMon = monhoc.MaMonHoc AND  muonphonghoc.NgayMuon = ? AND muonphonghoc.MaPhongHoc = ?  AND muonphonghoc.BuoiHoc = ? AND YEARWEEK(muonphonghoc.NgayMuon, 1) = YEARWEEK(?, 1)";
+		$result = $this->db->query($sql, array($NgayBatDauMuon, $MaPhongHoc, $BuoiHoc, $NgayBatDauMuon));
+		return $result->result_array();
+		
+	}
 	public function Check_TonTai($TietHoc, $NgayMuon , $MaPhongHoc, $BuoiHoc){
 		$sql ="SELECT * FROM `muonphonghoc` WHERE  TietHoc= ? AND NgayMuon = ?  AND MaPhongHoc = ? AND BuoiHoc = ?";
 		$result = $this->db->query($sql, array($TietHoc, $NgayMuon, $MaPhongHoc, $BuoiHoc));

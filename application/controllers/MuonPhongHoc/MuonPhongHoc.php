@@ -100,7 +100,6 @@ class MuonPhongHoc extends CI_Controller {
 		$NgayKetThucMuon = $this->input->post('NgayKetThucMuon');
 		$BuoiHoc = $this->input->post('BuoiHoc');
 		$MaPhongHoc = $this->input->post('PhongHoc');
-
 		if (empty($NgayMuon) && empty($NgayKetThucMuon ) && empty($BuoiHoc) && $MaPhongHoc==0) {
 			$MuonPhong = $this->Model_MuonPhongHoc->GetMuonPhong();
 			$data = array(
@@ -156,6 +155,13 @@ class MuonPhongHoc extends CI_Controller {
 			return $this->load->view('MuonPhongHoc/MuonPhong', $data);
 		}elseif(!empty($NgayMuon) && !empty($NgayKetThucMuon ) && !empty($BuoiHoc ) && $MaPhongHoc!=0){
 			$MuonPhong = $this->Model_MuonPhongHoc->GetMuonPhongByALL($NgayMuon, $NgayKetThucMuon , $MaPhongHoc, $BuoiHoc);
+			$data = array(
+				"MuonPhongHoc"=>$MuonPhong,
+				"PhongHoc"=>$PhongHoc,
+			);
+			return $this->load->view('MuonPhongHoc/MuonPhong', $data);
+		}elseif(!empty($NgayMuon) && empty($NgayKetThucMuon ) && !empty($BuoiHoc ) && $MaPhongHoc!=0){
+			$MuonPhong = $this->Model_MuonPhongHoc->GetMuonPhongByALL2($NgayMuon, $MaPhongHoc, $BuoiHoc);
 			$data = array(
 				"MuonPhongHoc"=>$MuonPhong,
 				"PhongHoc"=>$PhongHoc,
