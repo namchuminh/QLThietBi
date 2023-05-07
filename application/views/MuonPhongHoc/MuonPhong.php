@@ -40,7 +40,6 @@
                         <div class="col-sm-6">
                             <label>Buổi học</label>
                             <select name="BuoiHoc" class="form-control show-tick" tabindex="-98">
-                                <option value="0" hidden>Chọn buổi học</option>
                                 <option value="BuoiSang">Buổi Sáng</option>
                                 <option value="BuoiChieu">Buổi Chiều</option>
                                
@@ -72,7 +71,7 @@
                             <table class="table">
                                 <thead>
                                     <tr>
-                                        <th>Tiết</th>
+                                        <th style="text-align: center;">Tiết</th>
                                         <th>Thứ 2</th>
                                         <th>Thứ 3</th>
                                         <th>Thứ 4</th>
@@ -85,7 +84,7 @@
                                 <tbody>
                                          <?php for ($i=0; $i < 5; $i++) { $dem=0;?>
                                                 <tr class="BuoiSang">
-                                                    <td><?php echo $i+1; ?></td>
+                                                    <td style="width: 5%; text-align: center;"><?php echo $i+1; ?></td>
 
                                                     <?php for ($j=0; $j < 6; $j++){ ?>
                                                         <?php foreach ($MuonPhongHoc as $key => $value){
@@ -107,12 +106,12 @@
                                                         
                                                 </tr>
                                             <?php } ?>
-                                            <tr>
+                                            <tr style="width: 5%; text-align: center;">
                                                 <td style="border: none;"><b>Lịch buổi chiều</b></td>
                                             </tr>
                                            <?php for ($i=0; $i < 5; $i++) { $dem=0;?>
                                                 <tr class="BuoiSang">
-                                                    <td><?php echo $i+1; ?></td>
+                                                    <td style="width: 5%; text-align: center;"><?php echo $i+1; ?></td>
 
                                                     <?php for ($j=0; $j < 6; $j++){ ?>
                                                         <?php foreach ($MuonPhongHoc as $key => $value){

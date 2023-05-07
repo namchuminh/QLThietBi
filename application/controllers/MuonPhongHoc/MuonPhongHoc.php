@@ -100,6 +100,7 @@ class MuonPhongHoc extends CI_Controller {
 		$NgayKetThucMuon = $this->input->post('NgayKetThucMuon');
 		$BuoiHoc = $this->input->post('BuoiHoc');
 		$MaPhongHoc = $this->input->post('PhongHoc');
+
 		if (empty($NgayMuon) && empty($NgayKetThucMuon ) && empty($BuoiHoc) && $MaPhongHoc==0) {
 			$MuonPhong = $this->Model_MuonPhongHoc->GetMuonPhong();
 			$data = array(
@@ -275,12 +276,10 @@ class MuonPhongHoc extends CI_Controller {
 	}
 	public function check_null($MaPhongHoc , $BuoiHoc  , $TietHoc  , $MaLop  , $MaMon  , $TenBaiHoc  , $NgayMuon , $NguoiMuon)
 	{
-		if ($MaPhongHoc==0 && $BuoiHoc==0  && $TietHoc==0  && $MaLop==0  && $MaMon==0  && empty($TenBaiHoc)  && empty($NgayMuon) && empty($NguoiMuon)) {
+		if ($MaPhongHoc==0 && $TietHoc==0  && $MaLop==0  && $MaMon==0  && empty($TenBaiHoc)  && empty($NgayMuon) && empty($NguoiMuon)) {
 			return "Vui lòng nhập đủ thông tin";
 		}elseif($MaPhongHoc==0 ){
 			return "Vui lòng chọn phòng học";
-		}elseif($BuoiHoc==0 ){
-			return "Vui lòng chọn buổi học";
 		}elseif($TietHoc==0 ){
 			return "Vui lòng chọn tiết học";
 		}elseif($MaLop==0 ){
