@@ -58,10 +58,10 @@ class Model_MuonPhongHoc extends CI_Model {
 		return $result->result_array();
 		
 	}
-	public function GetMuonPhongByBuoiHoc($BuoiHoc)
+	public function GetMuonPhongByBuoiHoc($BuoiHoc, $MaPhongHoc)
 	{
-		$sql = "SELECT muonphonghoc.*, phonghoc.*, lophoc.*, monhoc.* FROM muonphonghoc, phonghoc, lophoc, monhoc WHERE muonphonghoc.MaPhongHoc = phonghoc.MaPhongHoc AND muonphonghoc.MaLop = lophoc.MaLop AND muonphonghoc.MaMon = monhoc.MaMonHoc AND muonphonghoc.BuoiHoc = ?  AND YEARWEEK(muonphonghoc.NgayMuon, 1) = YEARWEEK(CURDATE(), 1)";
-		$result = $this->db->query($sql, array($BuoiHoc));
+		$sql = "SELECT muonphonghoc.*, phonghoc.*, lophoc.*, monhoc.* FROM muonphonghoc, phonghoc, lophoc, monhoc WHERE muonphonghoc.MaPhongHoc = phonghoc.MaPhongHoc AND muonphonghoc.MaLop = lophoc.MaLop AND muonphonghoc.MaMon = monhoc.MaMonHoc AND muonphonghoc.BuoiHoc = ? AND muonphonghoc.MaPhongHoc = ?  AND YEARWEEK(muonphonghoc.NgayMuon, 1) = YEARWEEK(CURDATE(), 1)";
+		$result = $this->db->query($sql, array($BuoiHoc, $MaPhongHoc));
 		return $result->result_array();
 		
 	}
@@ -96,6 +96,11 @@ class Model_MuonPhongHoc extends CI_Model {
 	public function Check_TonTai($TietHoc, $NgayMuon , $MaPhongHoc, $BuoiHoc){
 		$sql ="SELECT * FROM `muonphonghoc` WHERE  TietHoc= ? AND NgayMuon = ?  AND MaPhongHoc = ? AND BuoiHoc = ?";
 		$result = $this->db->query($sql, array($TietHoc, $NgayMuon, $MaPhongHoc, $BuoiHoc));
+		return $result->result_array();
+	}
+	public function Check_TonTai2($MaMuonPhongHoc){
+		$sql ="SELECT * FROM `traphonghoc` WHERE MaMuonPhongHoc = ?";
+		$result = $this->db->query($sql, array($MaMuonPhongHoc));
 		return $result->result_array();
 	}
 	public function ADD($MaPhongHoc , $BuoiHoc  , $TietHoc  , $MaLop  , $MaMon  , $TenBaiHoc  , $NgayMuon , $NguoiMuon){

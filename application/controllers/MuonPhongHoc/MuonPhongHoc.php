@@ -47,20 +47,35 @@ class MuonPhongHoc extends CI_Controller {
 		return $this->load->view('MuonPhongHoc/SuaMuonPhongHoc', $data);
 	}
 	public function Tra($MaMuonPhongHoc)
-	{
-		$data = array(
-			"MaMuonPhongHoc"=>$MaMuonPhongHoc,
-		);
-		return $this->load->view('MuonPhongHoc/TraPhongHoc', $data);
+	{	
+		$check=$this->Model_MuonPhongHoc->Check_TonTai2($MaMuonPhongHoc);
+		if ($check!=null) {
+			$MuonPhong = $this->Model_MuonPhongHoc->GetMuonPhong();
+			$PhongHoc = $this->Model_MuonPhongHoc->GetPhongHoc();
+
+			$data = array(
+				'alert'=>"phòng học đã được trả",
+				"PhongHoc"=>$PhongHoc,
+				"MuonPhongHoc"=>$MuonPhong,
+			);
+			return $this->load->view('MuonPhongHoc/MuonPhong', $data);
+		}else{
+			$data = array(
+				"MaMuonPhongHoc"=>$MaMuonPhongHoc,
+			);
+			return $this->load->view('MuonPhongHoc/TraPhongHoc', $data);
+		}
+		
 	}
 	public function TraPhongHoc($MaMuonPhongHoc)
 	{
 		$NgayTraPhong = $this->input->post('NgayTraPhong');
 		$TinhTrang = $this->input->post('TinhTrang');
-		if (gettype($this->check_null2($TinhTrang, $NgayTraPhong))=="boolean") {
-			$TraPhong = $this->Model_MuonPhongHoc-> ADD_Tra($NgayTraPhong, $MaMuonPhongHoc, $TinhTrang);
+		
+		
+			if (gettype($this->check_null2($TinhTrang, $NgayTraPhong))=="boolean") {
+			$TraPhong = $this->Model_MuonPhongHoc->ADD_Tra($NgayTraPhong, $MaMuonPhongHoc, $TinhTrang);
 			if ($TraPhong==True) {
-				$result = $this->Model_MuonPhongHoc->Delete($MaMuonPhongHoc);
 				return redirect(base_url("muon-phong-hoc"));
 			}else{
 				$data = array(
@@ -69,13 +84,16 @@ class MuonPhongHoc extends CI_Controller {
 				);
 				return $this->load->view('MuonPhongHoc/TraPhongHoc', $data);
 			}
-		}else{
-			$data = array(
-				"error"=>$this->check_null2($TinhTrang, $NgayTraPhong),
-				"MaMuonPhongHoc"=>$MaMuonPhongHoc,
-			);
-			return $this->load->view('MuonPhongHoc/TraPhongHoc', $data);
-		}
+			}else{
+				$data = array(
+					"error"=>$this->check_null2($TinhTrang, $NgayTraPhong),
+					"MaMuonPhongHoc"=>$MaMuonPhongHoc,
+				);
+				return $this->load->view('MuonPhongHoc/TraPhongHoc', $data);
+			}
+		
+
+		
 		
 	}
 	public function Xoa($MaMuonPhongHoc)
@@ -140,7 +158,7 @@ class MuonPhongHoc extends CI_Controller {
 			);
 			return $this->load->view('MuonPhongHoc/MuonPhong', $data);
 		}elseif(empty($NgayMuon) && empty($NgayKetThucMuon ) && !empty($BuoiHoc ) && $MaPhongHoc!=0){
-			$MuonPhong = $this->Model_MuonPhongHoc->GetMuonPhongByBuoiHoc($BuoiHoc);
+			$MuonPhong = $this->Model_MuonPhongHoc->GetMuonPhongByBuoiHoc($BuoiHoc, $MaPhongHoc);
 			$data = array(
 				"MuonPhongHoc"=>$MuonPhong,
 				"PhongHoc"=>$PhongHoc,
