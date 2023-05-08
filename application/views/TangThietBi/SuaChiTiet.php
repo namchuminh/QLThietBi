@@ -11,7 +11,7 @@
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="card">
                     <div class="header">
-                        <h2><a href="<?php echo base_url("tang-thiet-bi/") ?>">Danh sách »</a> <a href="<?php echo base_url('tang-thiet-bi/chi-tiet/'.$MaChungTu); ?>">Chi tiết hóa đơn »</a> Sửa chi tiết</h2>
+                        <a class="btn btn-primary waves-effect" href="<?php echo base_url('tang-thiet-bi/chi-tiet/'.$MaChungTu); ?>">Quay Lại</a>
                     </div>
                     <div class="body">
                         <form action="<?php echo base_url("tang-thiet-bi/chi-tiet/sua-chi-tiet/".$MaChungTu."/".$ChiTietHoaDon[0]["MaChiTietHoaDon"]); ?>" method="POST">

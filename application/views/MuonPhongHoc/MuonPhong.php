@@ -40,7 +40,7 @@
                         <div class="col-sm-6">
                             <label>Buổi học</label>
                             <select name="BuoiHoc" class="form-control show-tick" tabindex="-98">
-                                <option value="0" hidden="">chọn buổi học</option>
+                                <option value="0" hidden="">Chọn buổi học</option>
                                 <option value="BuoiSang">Buổi Sáng</option>
                                 <option value="BuoiChieu">Buổi Chiều</option>
                                
