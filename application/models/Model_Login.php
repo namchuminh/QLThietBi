@@ -13,7 +13,7 @@ class Model_Login extends CI_Model {
 	{
 		$sql = "SELECT * FROM taikhoan WHERE TaiKhoan = ? AND MatKhau = ?";
 		$result = $this->db->query($sql,array($TaiKhoan, $MatKhau));
-		return $result->num_rows();
+		return $result->result_array();
 	}
 
 }

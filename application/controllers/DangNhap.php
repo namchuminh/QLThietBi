@@ -26,13 +26,18 @@ class DangNhap extends CI_Controller {
 			if(gettype($this->check_number($TaiKhoan,$MatKhau))=="boolean"){
 
 				$result = $this->Model_Login->Login($TaiKhoan, md5($MatKhau));
-				if($result > 0){
+				if($result != null && $result[0]['TrangThai']==0){
 					$newdata = array(
 				        'username'  => $TaiKhoan,
 				        'logged_in' => TRUE
 					);
 					$this->session->set_userdata($newdata);
 					redirect(base_url("index/"));
+				}elseif($result != null && $result[0]['TrangThai']==1){
+					$data = array(
+						"error" => "Tài khoản đã bị vô hiệu hóa",
+					);
+					return $this->load->view('DangNhap', $data);
 				}else{
 					$data = array(
 						"error" => "Sai tài khoản hoặc mật khẩu",

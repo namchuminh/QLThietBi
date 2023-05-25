@@ -331,9 +331,34 @@
                             </a>
                         </li>
                     </ul>
-                    
+                    <a href="javascript:void(0);" class="menu-toggle waves-effect waves-block">
+                          <i class="material-icons">assessment</i>
+                        <span>Hệ Thống</span>
+                    </a>
+                    <ul class="ml-menu" style="display: none;">
+                        <li>
+                            <a href="<?php echo base_url('quan-ly-nguoi-dung'); ?>" class="waves-effect waves-block">
+                                <span>Quản lý người dùng</span>
+                            </a>
+                        </li>
+                    </ul>
+                    <a href="javascript:void(0);" class="menu-toggle waves-effect waves-block">
+                          <i class="material-icons">library_books</i>
+                        <span>Báo cáo</span>
+                    </a>
+                    <ul class="ml-menu" style="display: none;">
+                        <li>
+                            <a href="<?php echo base_url('bao-cao'); ?>" class="waves-effect waves-block">
+                                <span>Thống kê và báo cáo</span>
+                            </a>
+                        </li>
+                    </ul>
+                    <a href="<?php echo base_url("dang-xuat") ?>" style="margin-top: 100px;">Đăng xuất</a>
                 </ul>
+
+                
             </div>
+
             <!-- #Menu -->
             <!-- Footer -->
             <div class="legal">

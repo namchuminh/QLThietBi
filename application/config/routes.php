@@ -175,3 +175,19 @@ $route['sua-chua-thiet-bi/liet-ke'] = "SuaChuaThietBi/SuaChuaThietBi/LietKe";
 $route['sua-chua-thiet-bi/xuat-excel'] = "SuaChuaThietBi/Xuat_Excel";
 
 $route['sua-chua-thiet-bi/them-sua'] = "SuaChuaThietBi/SuaChuaThietBi/ThemSuaChiTiet";
+
+
+
+
+$route['quan-ly-nguoi-dung'] = "QuanLyNguoiDung/QuanLyNguoiDung";
+$route['quan-ly-nguoi-dung/them-nhan-vien'] = "QuanLyNguoiDung/QuanLyNguoiDung/ThemNhanVien";
+$route['quan-ly-nguoi-dung/khoa-tai-khoan/(:any)'] = "QuanLyNguoiDung/QuanLyNguoiDung/KhoaTaiKhoan/$1";
+$route['quan-ly-nguoi-dung/mo-khoa-tai-khoan/(:any)'] = "QuanLyNguoiDung/QuanLyNguoiDung/MoKhoaTaiKhoan/$1";
+$route['quan-ly-nguoi-dung/set-quyen-user/(:any)'] = "QuanLyNguoiDung/QuanLyNguoiDung/SetUser/$1";
+$route['quan-ly-nguoi-dung/set-quyen-admin/(:any)'] = "QuanLyNguoiDung/QuanLyNguoiDung/SetAdmin/$1";
+
+
+
+$route['bao-cao'] = "BaoCao/ThongKeVaBaoCao";
+$route['bao-cao/xuat-excel'] = "BaoCao/ThongKeVaBaoCao/Xuat_Excel";
+
