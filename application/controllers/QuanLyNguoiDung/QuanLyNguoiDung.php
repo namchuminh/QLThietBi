@@ -6,8 +6,9 @@ class QuanLyNguoiDung extends CI_Controller {
 	{
 		parent::__construct();
 		if(!$this->session->has_userdata('logged_in')){
-			return redirect(base_url("dang-nhap/"));
+			return redirect(base_url("index/"));
 		}
+		$this->load->model('Model_Login');
 		$this->load->model('QuanLyNguoiDung/Model_QuanLyNguoiDung');
 	}
 
@@ -250,8 +251,6 @@ class QuanLyNguoiDung extends CI_Controller {
 			return "Vui lòng nhập số điện thoại";
 		}elseif(empty($NamSinh)){
 			return "Vui lòng chọn năm sinh";
-		}elseif($ChucVu==0){
-			return "Vui lòng chọn chức vụ";
 		}elseif(empty($QueQuan)){
 			return "Vui lòng nhập quê quán";
 		}else{

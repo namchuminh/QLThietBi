@@ -141,8 +141,8 @@
                         <div class="col-sm-6">
                                 <div class="form-group">
                                     <div class="form-line">
-                                        <label>Kinh phí sau sửa chữa</label>
-                                        <input type="text" id="KinhPhiSauSuaChua" name="KinhPhiSauSuaChua" class="form-control" placeholder="Nhập kinh phí sau sửa chữa" value="<?php echo $SuaThietBi[0]["KinhPhiSauSua"]; ?>">
+                                        <label>Giá trị sau sửa chữa</label>
+                                        <input type="text" name="KinhPhiSauSuaChua" class="form-control" placeholder="Nhập Giá trị sau sửa chữa" value="<?php echo $SuaThietBi[0]["KinhPhiSauSua"]; ?>">
                                     </div>
                                 </div>
                             </div>
@@ -193,14 +193,6 @@ $(document).ready(function(){
         });
   });
 });
-$(document).ready(function(){
-  $("#KinhPhiSauSuaChua").click(function(){
-        let SoLuong = $('#SoLuongHong').val();
-        let KinhPhiSuaChua = $('#KhinhPhiSuaChua').val();
-        let DonGia = $('#GiaThietBi').val();
-        let ThanhTien = (SoLuong*DonGia)+parseInt(KinhPhiSuaChua);
-        $('#KinhPhiSauSuaChua').val(ThanhTien);
-  });
-});
+
 </script>
 <?php require(__DIR__.'/layouts/Footer.php'); ?>

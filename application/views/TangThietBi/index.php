@@ -1,8 +1,6 @@
 <?php require(__DIR__.'/layouts/Header.php'); ?>
 <?php require(__DIR__.'/layouts/Nav.php'); ?>
-<?php if (isset($result)){
-    echo "<script type='text/javascript'>alert('$result');</script>";
-} ?>
+
     
 <section class="content">
     <div class="container-fluid">

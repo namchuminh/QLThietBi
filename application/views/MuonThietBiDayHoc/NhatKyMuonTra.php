@@ -1,8 +1,6 @@
 <?php require(__DIR__.'/layouts/Header.php'); ?>
 <?php require(__DIR__.'/layouts/Nav.php'); ?>
-<?php if (isset($result)){
-    echo "<script type='text/javascript'>alert('$result');</script>";
-} ?>
+
     
 <section class="content">
     <div class="container-fluid">
@@ -86,6 +84,7 @@
                                         <th>Ngày hẹn trả</th>
                                         <th>Ngày trả</th>
                                         <th>Tình trạng trả</th>
+                                        
 
                                     </tr>
                                 </thead>
@@ -100,6 +99,53 @@
                                             <td><?php echo $value["NgayTra"]; ?></td>
                                             <td><?php echo $value["NgayTraThietBi"]; ?></td>
                                             <td><?php echo $value["TinhTrangKhiTra"]; ?></td>
+
+                                        </tr>
+                                   <?php } ?>
+                                    
+                                                              
+                                </tbody>
+                            </table>
+                        </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="header">
+
+                                <h2>
+                                    Danh sách chưa trả
+                                </h2>
+                            </div>
+
+                        </div>
+                        <div class="body table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+
+                                        <th>Mã</th>
+                                        <th>Tên giáo viên</th>
+                                        <th>Tên Thiết bị dạy học</th>
+                                        <th>Mã cá biệt</th>
+                                        <th>Ngày mượn</th>
+                                        <th>Ngày hẹn trả</th>
+                                        <th>Ngày trả</th>
+                                        <th>Tình trạng</th>
+                                        <th>Trả ngay</th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php foreach ($NhatKy2 as $key => $value) { ?> 
+                                        <tr>
+                                            <td><?php echo $key+1; ?></td>
+                                            <td><?php echo $value["NguoiMuon"]; ?></td>
+                                            <td><?php echo $value["TenThietBi"]; ?></td>
+                                            <td><?php echo $value["MaCaBiet"]; ?></td>
+                                            <td><?php echo $value["NgayMuon"]; ?></td>
+                                            <td><?php echo $value["NgayTra"];; ?></td>
+                                            <td><?php echo "Chưa trả"; ?></td>
+                                            <td><?php echo "Chưa trả"; ?></td>
+                                            <td><a href="<?php echo base_url('muon-tra/tra/').$value["MaMuonThietBi"]; ?>"><i class="fa-sharp fa-solid fa-backward"></i></a> </td>
                                         </tr>
                                    <?php } ?>
                                     

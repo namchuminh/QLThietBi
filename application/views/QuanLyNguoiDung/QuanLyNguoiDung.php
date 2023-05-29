@@ -147,7 +147,7 @@
           <i class="fa-solid fa-user"></i>
           <label data-error="wrong" data-success="right" for="form32">Chức vụ</label>
           <select class="form-control show-tick" name="ChucVu" tabindex="-98">
-            <option value="0" hidden>Chọn chức vụ</option>
+            <option value="user" hidden>Chọn chức vụ</option>
             <option value="user">Người dùng</option>
             <option value="admin">Admin</option>
             
