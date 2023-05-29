@@ -1497,21 +1497,27 @@ class ThongKeVaBaoCao extends CI_Controller {
 			   
 			    if ($value['LyDoTang']=="Được Cấp") {
 			    	$excel2->getActiveSheet()
-			    	->setCellValue('F'.(7+$key), $value['SoLuong']);
+			    	->setCellValue('F'.(7+$key), $value['SoLuong'])
+			    	->setCellValue('J'.(7+$key), $value['SoLuong']);
 			    	$tong1 += $value['SoLuong'];
+
+
 			    }elseif($value['LyDoTang']=="Mua sắm theo kế hoạch"){
 			    	$excel2->getActiveSheet()
-			    	->setCellValue('G'.(7+$key), $value['SoLuong']);
+			    	->setCellValue('G'.(7+$key), $value['SoLuong'])
+			    	->setCellValue('J'.(7+$key), $value['SoLuong']);
 			    	$tong2 += $value['SoLuong'];
 
 			    }elseif($value['LyDoTang']=="Được viện trợ, cho tặng"){
 			    	$excel2->getActiveSheet()
-			    	->setCellValue('H'.(7+$key), $value['SoLuong']);
+			    	->setCellValue('H'.(7+$key), $value['SoLuong'])
+			    	->setCellValue('J'.(7+$key), $value['SoLuong']);
 			    	$tong3 += $value['SoLuong'];
 
 			    }else{
 			    	$excel2->getActiveSheet()
-			    	->setCellValue('I'.(7+$key), $value['SoLuong']);
+			    	->setCellValue('I'.(7+$key), $value['SoLuong'])
+			    	->setCellValue('J'.(7+$key), $value['SoLuong']);
 			    	$tong4 += $value['SoLuong'];
 			    }
 			    $tong += $value['SoLuong'];
@@ -1520,7 +1526,7 @@ class ThongKeVaBaoCao extends CI_Controller {
 			   	->setCellValue('G'.(8+$key), $tong2)
 			   	->setCellValue('H'.(8+$key), $tong3)
 			   	->setCellValue('I'.(8+$key), $tong4)
-			   	->setCellValue('J'.(8+$key), $tong)
+			   	->setCellValue('J'.(8+$key), $tong1+$tong2+$tong3+$tong4);
 			    ;
 			}
 		}
