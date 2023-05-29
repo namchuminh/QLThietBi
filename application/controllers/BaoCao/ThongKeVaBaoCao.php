@@ -830,7 +830,7 @@ class ThongKeVaBaoCao extends CI_Controller {
 		$objWriter->save('DowloadBaoCaoThietBiHuHong.xlsx');
 
 		header('Content-Type: application/vnd.ms-excel');
-		header('Content-Disposition: attachment;filename="BaoCaoThietBiMat.xls"');
+		header('Content-Disposition: attachment;filename="BaoCaoThietBiBiHuHong.xls"');
 		$objWriter->save('php://output');
 	}
 	public function ThietBiMat($TuNgay, $ToiNgay, $MaKho, $TenGiaoVien){
@@ -1548,10 +1548,7 @@ class ThongKeVaBaoCao extends CI_Controller {
 			$TheoDoi1 = $this->Model_BaoCao->Get_ThietBiMat5($TuNgay, $ToiNgay, $MaKho);
 			$TheoDoi2 = $this->Model_BaoCao->Get_ThietBiHong5($TuNgay, $ToiNgay, $MaKho);
 		}
-		// else if(empty($TuNgay) && empty($ToiNgay) && $MaKho==0 && !empty($TenGiaoVien)){
-		// 	$TheoDoi1 = $this->Model_BaoCao->Get_ThietBiMat6($TenGiaoVien);
-		// 	$TheoDoi2 = $this->Model_BaoCao->Get_ThietBiHong6($TenGiaoVien);
-		// }
+		
 		$excel2 = PHPExcel_IOFactory::createReader('Excel2007');
 		$excel2 = $excel2->load("C:\\xampp\htdocs\QLThietBi\application\controllers\BaoCao\Exel_file\TongHopTBMatHoacHong_Mau3D.xlsx"); // Empty Sheet
 		$tong=0;

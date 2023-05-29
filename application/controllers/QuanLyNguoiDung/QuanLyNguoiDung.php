@@ -124,19 +124,27 @@ class QuanLyNguoiDung extends CI_Controller {
 										"error"=> "ảnh đại diện chỉ nhận kiểu JPG, JPEG, PNG và GIF.",
 										"NguoiDung"=>$NguoiDung,
 									);
+									$uploadOk = 0;
 									return $this->load->view('QuanLyNguoiDung/QuanLyNguoiDung', $data);
 								 
-								  	$uploadOk = 0;
+								  	
 								}
 
 								// Check if $uploadOk is set to 0 by an error
+								move_uploaded_file($_FILES["AnhdaiDien"]["tmp_name"], $target_file);
 								if ($uploadOk == 0) {
+
 									$NguoiDung = $this->Model_QuanLyNguoiDung->Get_All($User);
 									$data = array(
 										"error"=> "lỗi file ảnh đại diện chưa được upload",
 										"NguoiDung"=>$NguoiDung,
 									);
-									return $this->load->view('QuanLyNguoiDung/QuanLyNguoiDung', $data);
+									if (move_uploaded_file($_FILES["AnhdaiDien"]["tmp_name"], $target_file)) {
+							            echo "a";
+							        } else {
+							            return $this->load->view('QuanLyNguoiDung/QuanLyNguoiDung', $data);
+							        }
+									
 								  
 								}
 
