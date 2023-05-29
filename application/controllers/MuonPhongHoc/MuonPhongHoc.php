@@ -5,6 +5,9 @@ class MuonPhongHoc extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
+		if(!$this->session->has_userdata('logged_in')){
+			return redirect(base_url("dang-nhap/"));
+		}
 		$this->load->model('MuonPhongHoc/Model_MuonPhongHoc');
 		
 	}
