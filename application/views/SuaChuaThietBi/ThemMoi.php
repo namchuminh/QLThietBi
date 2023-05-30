@@ -122,7 +122,7 @@
                                 <div class="form-group">
                                     <div class="form-line">
                                         <label>Nguồn kinh phí</label>
-                                        <input type="text" name="NguonKinhPhi" class="form-control" placeholder="Nhập nguồn kinh phí">
+                                        <input type="text"  name="NguonKinhPhi" class="form-control" placeholder="Nhập nguồn kinh phí">
                                     </div>
                                 </div>
                             </div>
@@ -189,6 +189,14 @@ $(document).ready(function(){
         });
   });
 });
-
+$(document).ready(function(){
+  $("#KinhPhiSauSuaChua").click(function(){
+        let SoLuong = $('#SoLuongHong').val();
+        let KinhPhiSuaChua = $('#KhinhPhiSuaChua').val();
+        let DonGia = $('#GiaThietBi').val();
+        let ThanhTien = (DonGia)-(DonGia)*10/100;
+        $('#KinhPhiSauSuaChua').val(ThanhTien);
+  });
+});
 </script>
 <?php require(__DIR__.'/layouts/Footer.php'); ?>

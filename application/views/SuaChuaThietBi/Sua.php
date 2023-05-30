@@ -142,7 +142,7 @@
                                 <div class="form-group">
                                     <div class="form-line">
                                         <label>Giá trị sau sửa chữa</label>
-                                        <input type="text" name="KinhPhiSauSuaChua" class="form-control" placeholder="Nhập Giá trị sau sửa chữa" value="<?php echo $SuaThietBi[0]["KinhPhiSauSua"]; ?>">
+                                        <input type="text" id="KinhPhiSauSuaChua" name="KinhPhiSauSuaChua" class="form-control" placeholder="Nhập Giá trị sau sửa chữa" value="<?php echo $SuaThietBi[0]["KinhPhiSauSua"]; ?>">
                                     </div>
                                 </div>
                             </div>
@@ -191,6 +191,24 @@ $(document).ready(function(){
             $("#GiaThietBi").html(data);
             $("#GiaThietBi").html($("#GiaThietBi").html());
         });
+  });
+});
+$(document).ready(function(){
+  $("#KinhPhiSauSuaChua").click(function(){
+        var ThietBi = $("#MaThietBi option:selected").text();
+        var MaKho = $('#MaKho').val();
+        var MaThietBi = $('#MaThietBi').val();
+        //alert(MaThietBi);
+        $.post("<?php echo base_url("sua-chua-thiet-bi/gia-thiet-bi/")?>"+MaThietBi+"/"+MaKho, function(data){
+            $("#GiaThietBi").html(data);
+            $("#GiaThietBi").html($("#GiaThietBi").html());
+            let DonGia = $('#GiaThietBi').val();
+            let ThanhTien = (DonGia)-(DonGia)*10/100;
+            $('#KinhPhiSauSuaChua').val(ThanhTien);
+        });
+        
+        
+        
   });
 });
 
