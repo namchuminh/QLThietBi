@@ -122,7 +122,7 @@
                                 <div class="form-group">
                                     <div class="form-line">
                                         <label>Nguồn kinh phí</label>
-                                        <input type="text" name="NguonKinhPhi" class="form-control" placeholder="Nhập nguồn kinh phí">
+                                        <input type="text"  name="NguonKinhPhi" class="form-control" placeholder="Nhập nguồn kinh phí">
                                     </div>
                                 </div>
                             </div>
@@ -137,8 +137,8 @@
                         <div class="col-sm-6">
                                 <div class="form-group">
                                     <div class="form-line">
-                                        <label>Kinh phí sau sửa chữa</label>
-                                        <input type="text" id="KinhPhiSauSuaChua" name="KinhPhiSauSuaChua" class="form-control" placeholder="Nhập kinh phí sau sửa chữa">
+                                        <label>Giá trị sau sửa chữa</label>
+                                        <input type="text" id="KinhPhiSauSuaChua" name="KinhPhiSauSuaChua" class="form-control" placeholder="Nhập Giá trị sau sửa chữa">
                                     </div>
                                 </div>
                             </div>
@@ -194,7 +194,7 @@ $(document).ready(function(){
         let SoLuong = $('#SoLuongHong').val();
         let KinhPhiSuaChua = $('#KhinhPhiSuaChua').val();
         let DonGia = $('#GiaThietBi').val();
-        let ThanhTien = (SoLuong*DonGia)+parseInt(KinhPhiSuaChua);
+        let ThanhTien = (DonGia)-(DonGia)*10/100;
         $('#KinhPhiSauSuaChua').val(ThanhTien);
   });
 });

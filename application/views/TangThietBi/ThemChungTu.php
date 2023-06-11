@@ -1,10 +1,6 @@
 <?php require(__DIR__.'/layouts/Header.php'); ?>
 <?php require(__DIR__.'/layouts/Nav.php'); ?>
-<?php
-    if(isset($alert)){
-        echo "<script type='text/javascript'>alert('$alert');</script>"; 
-    }
-?>
+
 <section class="content">
     <div class="container-fluid">
         <div class="block-header">

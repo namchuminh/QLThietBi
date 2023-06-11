@@ -15,6 +15,12 @@ class Model_Login extends CI_Model {
 		$result = $this->db->query($sql,array($TaiKhoan, $MatKhau));
 		return $result->result_array();
 	}
+	public function Login2($TaiKhoan)
+	{
+		$sql = "SELECT * FROM taikhoan WHERE TaiKhoan = ?";
+		$result = $this->db->query($sql,array($TaiKhoan));
+		return $result->result_array();
+	}
 
 	public function getUserLogged($TaiKhoan)
 	{

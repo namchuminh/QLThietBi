@@ -6,8 +6,9 @@ class XoaChungTu extends CI_Controller {
 	{
 		parent::__construct();
 		if(!$this->session->has_userdata('logged_in')){
-			return redirect(base_url("dang-nhap/"));
+			return redirect(base_url("index/"));
 		}
+		$this->load->model('Model_Login');
 		$this->load->model('TangThietBi/Model_TangThietBi');
 		$this->load->model('TangThietBi/Model_XoaChungTu');
 	}

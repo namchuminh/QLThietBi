@@ -6,8 +6,9 @@ class ThongKeVaBaoCao extends CI_Controller {
 	{
 		parent::__construct();
 		if(!$this->session->has_userdata('logged_in')){
-			return redirect(base_url("dang-nhap/"));
+			return redirect(base_url("index/"));
 		}
+		$this->load->model('Model_Login');
 		$this->load->library("excel");
 		$this->load->model('BaoCao/Model_BaoCao');
 	}
@@ -830,7 +831,7 @@ class ThongKeVaBaoCao extends CI_Controller {
 		$objWriter->save('DowloadBaoCaoThietBiHuHong.xlsx');
 
 		header('Content-Type: application/vnd.ms-excel');
-		header('Content-Disposition: attachment;filename="BaoCaoThietBiMat.xls"');
+		header('Content-Disposition: attachment;filename="BaoCaoThietBiBiHuHong.xls"');
 		$objWriter->save('php://output');
 	}
 	public function ThietBiMat($TuNgay, $ToiNgay, $MaKho, $TenGiaoVien){
@@ -1497,21 +1498,27 @@ class ThongKeVaBaoCao extends CI_Controller {
 			   
 			    if ($value['LyDoTang']=="Được Cấp") {
 			    	$excel2->getActiveSheet()
-			    	->setCellValue('F'.(7+$key), $value['SoLuong']);
+			    	->setCellValue('F'.(7+$key), $value['SoLuong'])
+			    	->setCellValue('J'.(7+$key), $value['SoLuong']);
 			    	$tong1 += $value['SoLuong'];
+
+
 			    }elseif($value['LyDoTang']=="Mua sắm theo kế hoạch"){
 			    	$excel2->getActiveSheet()
-			    	->setCellValue('G'.(7+$key), $value['SoLuong']);
+			    	->setCellValue('G'.(7+$key), $value['SoLuong'])
+			    	->setCellValue('J'.(7+$key), $value['SoLuong']);
 			    	$tong2 += $value['SoLuong'];
 
 			    }elseif($value['LyDoTang']=="Được viện trợ, cho tặng"){
 			    	$excel2->getActiveSheet()
-			    	->setCellValue('H'.(7+$key), $value['SoLuong']);
+			    	->setCellValue('H'.(7+$key), $value['SoLuong'])
+			    	->setCellValue('J'.(7+$key), $value['SoLuong']);
 			    	$tong3 += $value['SoLuong'];
 
 			    }else{
 			    	$excel2->getActiveSheet()
-			    	->setCellValue('I'.(7+$key), $value['SoLuong']);
+			    	->setCellValue('I'.(7+$key), $value['SoLuong'])
+			    	->setCellValue('J'.(7+$key), $value['SoLuong']);
 			    	$tong4 += $value['SoLuong'];
 			    }
 			    $tong += $value['SoLuong'];
@@ -1520,7 +1527,7 @@ class ThongKeVaBaoCao extends CI_Controller {
 			   	->setCellValue('G'.(8+$key), $tong2)
 			   	->setCellValue('H'.(8+$key), $tong3)
 			   	->setCellValue('I'.(8+$key), $tong4)
-			   	->setCellValue('J'.(8+$key), $tong)
+			   	->setCellValue('J'.(8+$key), $tong1+$tong2+$tong3+$tong4);
 			    ;
 			}
 		}
@@ -1548,10 +1555,7 @@ class ThongKeVaBaoCao extends CI_Controller {
 			$TheoDoi1 = $this->Model_BaoCao->Get_ThietBiMat5($TuNgay, $ToiNgay, $MaKho);
 			$TheoDoi2 = $this->Model_BaoCao->Get_ThietBiHong5($TuNgay, $ToiNgay, $MaKho);
 		}
-		// else if(empty($TuNgay) && empty($ToiNgay) && $MaKho==0 && !empty($TenGiaoVien)){
-		// 	$TheoDoi1 = $this->Model_BaoCao->Get_ThietBiMat6($TenGiaoVien);
-		// 	$TheoDoi2 = $this->Model_BaoCao->Get_ThietBiHong6($TenGiaoVien);
-		// }
+		
 		$excel2 = PHPExcel_IOFactory::createReader('Excel2007');
 		$excel2 = $excel2->load("C:\\xampp\htdocs\QLThietBi\application\controllers\BaoCao\Exel_file\TongHopTBMatHoacHong_Mau3D.xlsx"); // Empty Sheet
 		$tong=0;

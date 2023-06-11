@@ -5,6 +5,13 @@ class QuanLyNguoiDung extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
+<<<<<<< HEAD
+=======
+		if(!$this->session->has_userdata('logged_in')){
+			return redirect(base_url("index/"));
+		}
+		$this->load->model('Model_Login');
+>>>>>>> 76eb1f97c00b59051fba8143ac185c23f1576950
 		$this->load->model('QuanLyNguoiDung/Model_QuanLyNguoiDung');
 	}
 
@@ -124,19 +131,27 @@ class QuanLyNguoiDung extends CI_Controller {
 										"error"=> "ảnh đại diện chỉ nhận kiểu JPG, JPEG, PNG và GIF.",
 										"NguoiDung"=>$NguoiDung,
 									);
+									$uploadOk = 0;
 									return $this->load->view('QuanLyNguoiDung/QuanLyNguoiDung', $data);
 								 
-								  	$uploadOk = 0;
+								  	
 								}
 
 								// Check if $uploadOk is set to 0 by an error
+								move_uploaded_file($_FILES["AnhdaiDien"]["tmp_name"], $target_file);
 								if ($uploadOk == 0) {
+
 									$NguoiDung = $this->Model_QuanLyNguoiDung->Get_All($User);
 									$data = array(
 										"error"=> "lỗi file ảnh đại diện chưa được upload",
 										"NguoiDung"=>$NguoiDung,
 									);
-									return $this->load->view('QuanLyNguoiDung/QuanLyNguoiDung', $data);
+									if (move_uploaded_file($_FILES["AnhdaiDien"]["tmp_name"], $target_file)) {
+							            echo "a";
+							        } else {
+							            return $this->load->view('QuanLyNguoiDung/QuanLyNguoiDung', $data);
+							        }
+									
 								  
 								}
 
@@ -239,8 +254,6 @@ class QuanLyNguoiDung extends CI_Controller {
 			return "Vui lòng nhập số điện thoại";
 		}elseif(empty($NamSinh)){
 			return "Vui lòng chọn năm sinh";
-		}elseif($ChucVu==0){
-			return "Vui lòng chọn chức vụ";
 		}elseif(empty($QueQuan)){
 			return "Vui lòng nhập quê quán";
 		}else{

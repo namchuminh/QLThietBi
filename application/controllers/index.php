@@ -9,13 +9,20 @@ class index extends CI_Controller {
 		if(!$this->session->has_userdata('logged_in')){
 			return redirect(base_url("dang-nhap/"));
 		}
-		
+		$this->load->model('Model_Login');
 	}
 
 	public function index()
 	{
-		return $this->load->view('TrangChu');
+		$username = $this->session->userdata("username");
+		$result = $this->Model_Login->Login2($username);
+		$data = array(
+			"username" => $username,
+			"userinfo" => $result,
+		);
+		return $this->load->view('TrangChu', $data);
 	}
+
 
 }
 
