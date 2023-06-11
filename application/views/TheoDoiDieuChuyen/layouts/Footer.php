@@ -35,6 +35,8 @@
 
     <!-- Demo Js -->
     <script src="<?php echo base_url('public/'); ?>js/demo.js"></script>
+    <script src="<?php echo base_url('public/'); ?>js/nav-location.js"></script>
+
 
 </body>
 

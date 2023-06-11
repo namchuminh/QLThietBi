@@ -4,7 +4,7 @@
    <div class="container">
 
       <div class="row" style="text-align: center; align-items: center;  justify-content: center;">
-        <h1 style="color: #79E0EE;">CHÀO MỪNG ĐẾN VỚI HỆ THỐNG QUẢN LÝ - THIẾT BỊ</h1>
+        <h1 style="color: #f44336;">CHÀO MỪNG ĐẾN VỚI HỆ THỐNG QUẢN LÝ - THIẾT BỊ</h1>
         <p>Hệ thống giúp quản lý trang  thiết bị trong trường học một cách đơn giản và hiệu quả</p>
 
         <div style="text-align: center; align-items: center;  justify-content: center;">

@@ -39,39 +39,6 @@
 
     <!-- Demo Js -->
     <script src="<?php echo base_url('public/'); ?>js/demo.js"></script>
-
 </body>
-
-  <script type="text/javascript">
-        $(document).ready(function(e) {
-
-            $(localStorage.getItem("ml-menu")).attr("style","display: block;");
-
-            $("#a-tb").click(function(){
-                localStorage.clear();
-                localStorage.setItem("ml-menu", "#ml-menu-tb");
-            })
-
-            $("#a-mt").click(function(){
-                localStorage.clear();
-                localStorage.setItem("ml-menu", "#ml-menu-mt");
-            })
-
-            $("#a-ht").click(function(){
-                localStorage.clear();
-                localStorage.setItem("ml-menu", "#ml-menu-ht");
-            })
-
-            $("#a-bc").click(function(){
-                localStorage.clear();
-                localStorage.setItem("ml-menu", "#ml-menu-bc");
-            })
-
-            $("#a-home").click(function(){
-                $(localStorage.getItem("ml-menu")).attr("style","display: none;");
-                localStorage.clear();
-            })
-
-        });
-    </script>
+<script src="<?php echo base_url('public/'); ?>js/nav-location.js"></script>
 </html>

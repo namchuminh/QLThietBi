@@ -5,13 +5,10 @@ class QuanLyNguoiDung extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
-<<<<<<< HEAD
-=======
 		if(!$this->session->has_userdata('logged_in')){
 			return redirect(base_url("index/"));
 		}
 		$this->load->model('Model_Login');
->>>>>>> 76eb1f97c00b59051fba8143ac185c23f1576950
 		$this->load->model('QuanLyNguoiDung/Model_QuanLyNguoiDung');
 	}
 
