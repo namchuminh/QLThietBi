@@ -27,8 +27,12 @@ class DangNhap extends CI_Controller {
 
 				$result = $this->Model_Login->Login($TaiKhoan, md5($MatKhau));
 				if($result != null && $result[0]['TrangThai']==0){
+					$user_logged = $this->Model_Login->getUserLogged($TaiKhoan);
+
 					$newdata = array(
 				        'username'  => $TaiKhoan,
+				        'fullname' => $user_logged[0]['HoTen'],
+				        'avatar' => $user_logged[0]['AnhDaiDien'],
 				        'logged_in' => TRUE
 					);
 					$this->session->set_userdata($newdata);

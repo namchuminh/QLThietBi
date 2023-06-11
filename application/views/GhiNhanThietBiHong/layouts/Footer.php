@@ -30,12 +30,10 @@
 
     <!-- Custom Js -->
     <script src="<?php echo base_url('public/'); ?>js/admin.js"></script>
-    <script src="<?php echo base_url('public/'); ?>js/pages/ui/modals.js"></script>
     <script src="<?php echo base_url('public/'); ?>js/pages/forms/advanced-form-elements.js"></script>
 
     <!-- Demo Js -->
     <script src="<?php echo base_url('public/'); ?>js/demo.js"></script>
-
 </body>
 
 </html>
