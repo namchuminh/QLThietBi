@@ -42,14 +42,6 @@
                 <a href="javascript:void(0);" class="bars"></a>
                 <a class="navbar-brand" href="<?php echo base_url('index/'); ?>">HỆ THỐNG QUẢN LÝ - THIẾT BỊ</a>
             </div>
-<<<<<<< HEAD
-            
-=======
-            <div class="collapse navbar-collapse" id="navbar-collapse">
-                <ul class="nav navbar-nav navbar-right">
-                </ul>
-            </div>
->>>>>>> 76eb1f97c00b59051fba8143ac185c23f1576950
         </div>
     </nav>
     <!-- #Top Bar -->
@@ -59,20 +51,11 @@
             <!-- User Info -->
             <div class="user-info">
                 <div class="image">
-<<<<<<< HEAD
                     <img src="<?php echo $_SESSION['avatar']; ?>" width="48" height="48" alt="User" />
                 </div>
                 <div class="info-container">
                     <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="text-transform: uppercase; font-weight: bold; font-size: 16px; word-spacing: 1px; letter-spacing: 1px;"><?php echo $_SESSION['fullname']; ?></div>
                     <div class="email"><?php echo $_SESSION['username']; ?></div>
-=======
-                    <img src="<?php echo $result[0]["AnhDaiDien"]; ?>" width="48" height="48" alt="User" />
-                </div>
-                <div class="info-container">
-                    <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?php if (isset($username)) {
-                       echo "Xin chào ".$username;
-                    }?></div>
->>>>>>> 76eb1f97c00b59051fba8143ac185c23f1576950
                     <div class="btn-group user-helper-dropdown">
                         <i class="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
                         <ul class="dropdown-menu pull-right">
@@ -174,32 +157,6 @@
                         </li>
                     </ul>
                 </ul>
-
-                
             </div>
-
-            <!-- #Menu -->
-            <!-- Footer -->
-            <div class="legal">
-<<<<<<< HEAD
-                <div class="copyright">
-                    &copy; 2023 - 2024 <a href="javascript:void(0);">Quản Lý Thiết Bị Dạy Học</a>.
-                </div>
-                <div class="version">
-                    <b>Phiên Bản: </b> 1.0.0
-                </div>
-            </div>
-            <!-- #Footer -->
         </aside>
-        <!-- #END# Left Sidebar -->
-        <!-- Right Sidebar -->
-        <!-- #END# Right Sidebar -->
-=======
-                
-            </div>
-            <!-- #Footer -->
-        </aside>
-        
-       
->>>>>>> 76eb1f97c00b59051fba8143ac185c23f1576950
-    </section>
+</section>
